@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { routes } from './app.routing';
+import { SharedModule } from './shared/shared.module';
 
 import { ElectronService } from './electron.service';
 
@@ -21,6 +22,7 @@ import { ElectronService } from './electron.service';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes, { useHash: true })
