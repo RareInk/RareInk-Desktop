@@ -26,5 +26,10 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "exclude": [
+    "dist",
+    "app-builds",
+    "node_modules"
+  ]
 }

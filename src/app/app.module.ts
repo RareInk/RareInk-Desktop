@@ -1,3 +1,7 @@
+import 'zone.js/dist/zone-mix';
+import 'reflect-metadata';
+import 'polyfills';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -10,10 +14,6 @@ import { routes } from './app.routing';
 
 import { ElectronService } from './electron.service';
 
-import 'zone.js/dist/zone-mix';
-import 'reflect-metadata';
-import 'polyfills';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +23,7 @@ import 'polyfills';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes, {useHash: true})
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]
