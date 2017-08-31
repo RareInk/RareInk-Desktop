@@ -20,6 +20,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "rareink",
       "styles": [
+        "../node_modules/normalize.css/normalize.css",
         "styles.scss"
       ],
       "scripts": [
