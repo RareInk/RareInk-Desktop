@@ -1,12 +1,20 @@
 {
-  "name": "angular-electron",
-  "version": "1.7.0",
-  "description": "Angular 4 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
-  "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
-  },
+  "name": "rareink-desktop",
+  "version": "0.0.0",
+  "description": "The desktop version of the RareInk app. Open source.",
+  "homepage": "https://github.com/RareInk/RareInk-Desktop",
+  "author": "Mhyre",
+  "contributors": [
+    {
+      "name": "Mhyre",
+      "url": "https://github.com/eryhM"
+    },
+    {
+      "name": "Resi Respati",
+      "email": "resir014@blvd.space",
+      "url": "https://github.com/resir014"
+    }
+  ],
   "license": "MIT",
   "keywords": [
     "rareink",
