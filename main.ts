@@ -1,14 +1,69 @@
-import { app, BrowserWindow, ipcMain, screen } from 'electron';
+import { app, BrowserWindow, ipcMain, screen, Menu } from 'electron';
 import * as path from 'path';
 
 let win;
 const args = process.argv.slice(1);
 const serve = args.some(val => val === '--serve');
+const isWindows = process.platform === 'win32';
 
 if (serve) {
   require('electron-reload')(__dirname, {});
 }
 
+/**
+ * Build the main menu of our app.
+ */
+function setMainMenu() {
+  const template: any[] = [
+    {
+      label: isWindows ? 'File' : app.getName(),
+      submenu: [
+        {
+          label: isWindows ? 'Exit' : `Quit ${app.getName()}`,
+          accelerator: isWindows ? 'Alt+F4' : 'CmdOrCtrl+Q',
+          click: () => {
+            app.quit();
+          }
+        }
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        {role: 'undo'},
+        {role: 'redo'},
+        {type: 'separator'},
+        {role: 'cut'},
+        {role: 'copy'},
+        {role: 'paste'},
+        {role: 'pasteandmatchstyle'},
+        {role: 'delete'},
+        {role: 'selectall'}
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        {role: 'reload'},
+        {role: 'forcereload'},
+        {role: 'toggledevtools'},
+        {type: 'separator'},
+        {role: 'resetzoom'},
+        {role: 'zoomin'},
+        {role: 'zoomout'},
+        {type: 'separator'},
+        {role: 'togglefullscreen'}
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
+
+/**
+ * This function hold all Electron IPC listeners.
+ */
 function initMainListener() {
   ipcMain.on('ELECTRON_BRIDGE_HOST', (event, msg) => {
     console.log(`[ELECTRON_BRIDGE_HOST] message: ${msg}`);
@@ -18,6 +73,9 @@ function initMainListener() {
   });
 }
 
+/**
+ * Creates the browser window.
+ */
 function createWindow() {
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -32,6 +90,9 @@ function createWindow() {
 
   // and load the index.html of the app.
   win.loadURL('file://' + __dirname + '/index.html');
+
+  // Build the application main menu.
+  setMainMenu();
 
   // Open the DevTools.
   if (serve) {
