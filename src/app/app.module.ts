@@ -28,7 +28,6 @@ import { SharedModule } from './shared';
   imports: [
     BrowserModule,
     CoreModule,
-    NgxElectronModule,
     SharedModule,
     FormsModule,
     HttpModule,

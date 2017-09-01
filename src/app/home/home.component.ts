@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
-
+import { NgxElectronService } from '../core/ngx-electron';
 
 @Component({
   selector: 'rareink-home',
@@ -10,8 +9,8 @@ import { ElectronService } from 'ngx-electron';
 export class HomeComponent implements OnInit {
   title = `App works!`;
 
-  constructor(private electron: ElectronService) {
-    if (this.electron.isElectronApp) {
+  constructor(private electron: NgxElectronService) {
+    if (this.electron.isElectron) {
       console.log('isElectron');
     } else {
       console.log('isWeb');
@@ -19,7 +18,14 @@ export class HomeComponent implements OnInit {
   }
 
   doTheBeepBeep(): void {
-    this.electron.shell.beep();
+    if (this.electron.isElectron) {
+      this.electron.send('ping');
+      this.electron.listener$.subscribe(message => {
+        if (message === 'pong') {
+          this.electron.shell.beep();
+        }
+      });
+    }
   }
 
   ngOnInit() {
