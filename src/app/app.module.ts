@@ -10,15 +10,15 @@ import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home';
 import { routes } from './app.routing';
 import { metaReducers, reducers } from './store';
 import { environment } from '../environments';
-import { SharedModule } from './shared/shared.module';
-
-import { ElectronService } from './electron.service';
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,8 @@ import { ElectronService } from './electron.service';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    NgxElectronModule,
     SharedModule,
     FormsModule,
     HttpModule,
@@ -35,7 +37,6 @@ import { ElectronService } from './electron.service';
     !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
     RouterModule.forRoot(routes, { useHash: true })
   ],
-  providers: [ElectronService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

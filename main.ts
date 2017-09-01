@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, ipcMain, screen, } from 'electron';
 import * as path from 'path';
 
 let win, serve;
@@ -6,12 +6,19 @@ const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
 if (serve) {
-  require('electron-reload')(__dirname, {
+  require('electron-reload')(__dirname, {});
+}
+
+function initMainListener() {
+  ipcMain.on('ELECTRON_BRIDGE_HOST', (event, msg) => {
+    console.log('msg received', msg);
+    if (msg === 'ping') {
+      event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
+    }
   });
 }
 
 function createWindow() {
-
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
@@ -38,10 +45,11 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
+  initMainListener();
 }
 
 try {
-
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
@@ -65,6 +73,6 @@ try {
   });
 
 } catch (e) {
-  // Catch Error
+  // Catch error
   // throw e;
 }
