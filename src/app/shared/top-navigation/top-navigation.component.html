@@ -1,10 +1,10 @@
-<nav class="top-navigation" #topnav>
+<nav class="top-navigation">
   <a href="/" class="top-navigation__brand">RareInk</a>
   <div class="top-navigation__collapse-button">
     <!-- TODO: Toggle states. -->
-    <a>&#9776;</a>
+    <a (click)="toggle()">&#9776;</a>
   </div>
-  <div class="top-navigation__links">
+  <div class="top-navigation__links" #toggleable>
     <ul>
       <li><a href="">Example Link 1</a></li>
       <li><a href="">Example Link 2</a></li>

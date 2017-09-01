@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'rareink-ui-top-navigation',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavigationComponent implements OnInit {
 
+  @ViewChild('toggleable') toggleable: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    this.toggleable.nativeElement.classList.toggle(['toggled']);
   }
 
 }

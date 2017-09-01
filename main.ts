@@ -1,9 +1,9 @@
-import { app, BrowserWindow, ipcMain, screen, } from 'electron';
+import { app, BrowserWindow, ipcMain, screen } from 'electron';
 import * as path from 'path';
 
-let win, serve;
+let win;
 const args = process.argv.slice(1);
-serve = args.some(val => val === '--serve');
+const serve = args.some(val => val === '--serve');
 
 if (serve) {
   require('electron-reload')(__dirname, {});
@@ -11,7 +11,7 @@ if (serve) {
 
 function initMainListener() {
   ipcMain.on('ELECTRON_BRIDGE_HOST', (event, msg) => {
-    console.log('msg received', msg);
+    console.log(`[ELECTRON_BRIDGE_HOST] message: ${msg}`);
     if (msg === 'ping') {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
     }
