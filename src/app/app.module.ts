@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
