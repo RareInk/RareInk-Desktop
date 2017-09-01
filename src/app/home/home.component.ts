@@ -9,13 +9,7 @@ import { NgxElectronService } from '../core/ngx-electron';
 export class HomeComponent implements OnInit {
   title = `App works!`;
 
-  constructor(private electron: NgxElectronService) {
-    if (this.electron.isElectron) {
-      console.log('isElectron');
-    } else {
-      console.log('isWeb');
-    }
-  }
+  constructor(private electron: NgxElectronService) {}
 
   doTheBeepBeep(): void {
     if (this.electron.isElectron) {

@@ -9,6 +9,15 @@ $brand-color-wine-red: #903;
 // Neutral colours
 // TODO: Add more shades of grey.
 $color-white: #fff;
+$color-gray-100: #f8f9fa;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #868e96;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
 $color-black: #000;
 
 // Utility colours
@@ -31,6 +40,12 @@ $font-family-monospace: Menlo, Monaco, "Consolas", "Liberation Mono", "Courier N
 // Font dimensions
 $root-font-size: 16px;
 $root-line-height: 1.5;
+
+// Grid breakpoints
+$grid-breakpoint-sm: 576px;
+$grid-breakpoint-md: 768px;
+$grid-breakpoint-lg: 992px;
+$grid-breakpoint-xl: 1200px;
 
 // Global elements
 $body-color: $color-black;
