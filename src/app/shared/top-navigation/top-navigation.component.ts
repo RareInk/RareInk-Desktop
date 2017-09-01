@@ -15,7 +15,7 @@ export class TopNavigationComponent implements OnInit {
   }
 
   toggle() {
-    this.toggleable.nativeElement.classList.toggle(['toggled']);
+    this.toggleable.nativeElement.classList.toggle(['expanded']);
   }
 
 }

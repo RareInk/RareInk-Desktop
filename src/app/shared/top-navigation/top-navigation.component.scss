@@ -10,6 +10,7 @@
 
   &__collapse-button {
     float: right;
+    cursor: pointer;
   }
 
   a {
@@ -26,9 +27,14 @@
     }
   }
 
-  ul {
+  &__links {
+    display: none;
     margin: 0;
     padding: 0;
     list-style-type: none;
+
+    &.expanded {
+      display: block;
+    }
   }
 }
