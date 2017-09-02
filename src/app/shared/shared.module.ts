@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { TopNavigationComponent } from './top-navigation';
+import { TitleBarComponent } from './title-bar/title-bar.component';
 
 @NgModule({
   declarations: [
-    TopNavigationComponent
+    TopNavigationComponent,
+    TitleBarComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { TopNavigationComponent } from './top-navigation';
     ReactiveFormsModule
   ],
   exports: [
-    TopNavigationComponent
+    TopNavigationComponent,
+    TitleBarComponent
   ]
 })
 export class SharedModule { }

@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain, screen, Menu } from 'electron';
 import * as path from 'path';
 
-let win;
+let win: Electron.BrowserWindow | null;
 const args = process.argv.slice(1);
 const serve = args.some(val => val === '--serve');
 const isWindows = process.platform === 'win32';
@@ -63,12 +63,28 @@ function setMainMenu() {
 
 /**
  * This function hold all Electron IPC listeners.
+ *
+ * @param {Electron.BrowserWindow} window The window object, in case the event
+ *    manipulates it.
  */
-function initMainListener() {
+function initMainListener(window: Electron.BrowserWindow) {
   ipcMain.on('ELECTRON_BRIDGE_HOST', (event, msg) => {
     console.log(`[ELECTRON_BRIDGE_HOST] message: ${msg}`);
     if (msg === 'ping') {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
+    }
+    if (msg === 'rareink:window:minimize') {
+      window.minimize();
+    }
+    if (msg === 'rareink:window:maximize') {
+      if (window.isMaximized()) {
+        window.unmaximize();
+      } else {
+        window.maximize();
+      }
+    }
+    if (msg === 'rareink:window:close') {
+      window.close();
     }
   });
 }
@@ -85,7 +101,10 @@ function createWindow() {
     x: 0,
     y: 0,
     width: size.width,
-    height: size.height
+    height: size.height,
+    title: 'RareInk',
+    autoHideMenuBar: true,
+    frame: false
   });
 
   // and load the index.html of the app.
@@ -107,7 +126,8 @@ function createWindow() {
     win = null;
   });
 
-  initMainListener();
+  // Initialise the ipcMain listeners referencing the window object we created.
+  initMainListener(win);
 }
 
 try {
