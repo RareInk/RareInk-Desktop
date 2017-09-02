@@ -6,7 +6,6 @@
 @import "~styles/mixins";
 
 html {
-  height: 100%;
   font-family: $font-family-sans-serif;
   font-size: $root-font-size;
   line-height: $root-line-height;
@@ -18,11 +17,15 @@ html {
 }
 
 body {
-  min-height: 100%;
   color: $body-color;
   background-color: $background-color;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 a {
