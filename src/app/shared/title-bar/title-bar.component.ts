@@ -8,6 +8,9 @@ import { NgxElectronService } from '../../core/ngx-electron';
 })
 export class TitleBarComponent implements OnInit {
 
+  // TODO: Make this dynamic, probably?
+  public title = 'RareInk'
+
   constructor(private electron: NgxElectronService) { }
 
   onCloseClick() {
