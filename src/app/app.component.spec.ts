@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { ElectronService } from './electron.service';
+import { NgxElectronService } from './core/ngx-electron';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,7 +10,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers : [
-        ElectronService
+        NgxElectronService
       ],
       imports: [RouterTestingModule]
     }).compileComponents();

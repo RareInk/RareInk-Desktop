@@ -9,7 +9,7 @@ Bootstrap and package your project with Angular 4(+) and Electron (Typescript + 
 Currently runs with:
 
 - Angular v4.3.5
-- Angular-CLI v1.3.1
+- Angular CLI v1.3.1
 - Electron v1.7.5
 - Electron Packager v8.7.2
 
@@ -17,7 +17,7 @@ With this sample, you can:
 
 - Run your app in a local development environment with Electron & Hot reload
 - Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & Mac
+- Package your app into an executable file for Linux, Windows & macOS
 
 ### Getting Started
 
@@ -35,7 +35,7 @@ $ npm install
 
 There is an issue with `yarn` and `node_modules` that are only used in electron on the backend when the application is built by the packager. Please use `npm` as dependencies manager.
 
-If you want to generate Angular components with Angular-cli , you **MUST** install `@angular/cli` in npm global context.
+If you want to generate Angular components with Angular CLI, you **MUST** install `@angular/cli` in npm global context.
 Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
 
 ``` bash
@@ -73,14 +73,14 @@ Your built files are in the /dist folder.
 |--|--|
 |`npm run start:web`| Execute the app in the brower |
 |`npm run electron:linux`| Builds your application and creates an app consumable on linux system |
-|`npm run electron:windows`| On a Windows OS, builds your application and creates an app consumable in windows 32/64 bit systems |
-|`npm run electron:mac`|  On a MAC OS, builds your application and generates a `.app` file of your application that can be run on Ma |
+|`npm run electron:windows`| On Windows, builds your application and creates an app consumable in windows 32/64 bit systems |
+|`npm run electron:mac`|  On macOS, builds your application and generates a `.app` file of your application that can be run on Ma |
 
 **Your application is optimised. Only the files of /dist folder are included in the executable.**
 
 ### Use NodeJS Native libraries
 
-Actually Angular-Cli doesn't seem to be able to import nodeJS native libs or electron libs at compile time (Webpack error). This is (one of) the reason why webpack.config was ejected of ng-cli.
+Actually Angular CLI doesn't seem to be able to import nodeJS native libs or electron libs at compile time (Webpack error). This is (one of) the reason why webpack.config was ejected of ng-cli.
 If you need to use NodeJS native libraries, you **MUST** add it manually in the file `webpack.config.js` in root folder :
 
 ```javascript
