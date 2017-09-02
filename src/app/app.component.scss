@@ -10,7 +10,7 @@
 
   // Add a tiny border if we're running inside of Electron.
   &.is-electron {
-    border: 1px solid $brand-color-wine-red;
+    border: 1px solid lighten($brand-color-wine-red, 5%);
   }
 }
 
