@@ -73,6 +73,10 @@ function initMainListener(window: Electron.BrowserWindow) {
     if (msg === 'ping') {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
     }
+    if (msg === 'rareink:window:toggle-menu') {
+      const menu = Menu.getApplicationMenu();
+      menu.popup();
+    }
     if (msg === 'rareink:window:minimize') {
       window.minimize();
     }
@@ -109,7 +113,7 @@ function createWindow() {
   win.loadURL('file://' + __dirname + '/index.html');
 
   // Build the application main menu.
-  setMainMenu();
+  // setMainMenu();
 
   // Open the DevTools.
   if (serve) {
