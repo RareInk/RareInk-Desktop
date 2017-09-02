@@ -25,11 +25,17 @@ function createWindow() {
     height: 600,
     title: 'RareInk',
     autoHideMenuBar: true,
-    frame: false
+    frame: false,
+    show: false
   });
 
   // and load the index.html of the app.
   win.loadURL(path.join('file://' + __dirname, '../index.html'));
+
+  // Show when window content is fully loaded
+  win.webContents.on('did-finish-load', () => {
+    win.show();
+  });
 
   // Build the application main menu.
   // setMainMenu();
