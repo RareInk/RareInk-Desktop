@@ -14,7 +14,7 @@ if (serve) {
  * Build the main menu of our app.
  */
 function setMainMenu() {
-  const template: any[] = [
+  const template: Electron.MenuItemConstructorOptions[] = [
     {
       label: isWindows ? 'File' : app.getName(),
       submenu: [
