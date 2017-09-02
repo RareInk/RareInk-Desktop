@@ -33,7 +33,7 @@ function createWindow() {
   win.loadURL(path.join('file://' + __dirname, '../index.html'));
 
   // Show when window content is fully loaded
-  win.webContents.on('did-finish-load', () => {
+  win.once('ready-to-show', () => {
     win.show();
   });
 
