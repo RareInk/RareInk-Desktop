@@ -40,7 +40,8 @@
       cursor: default;
 
       &.minimize,
-      &.maximize {
+      &.maximize,
+      &.toggle-menu {
         &:hover {
           transition: background-color 0.1s;
           // Default Windows Minimize/Maximize button hover color.

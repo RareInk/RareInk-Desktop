@@ -13,6 +13,12 @@ export class TitleBarComponent implements OnInit {
 
   constructor(private electron: NgxElectronService) { }
 
+  onHamburgerMenuClick() {
+    if (this.electron.isElectron) {
+      this.electron.send('rareink:window:toggle-menu');
+    }
+  }
+
   onCloseClick() {
     if (this.electron.isElectron) {
       this.electron.send('rareink:window:close');
