@@ -9,7 +9,7 @@ const serve = args.some(val => val === '--serve');
 const isWindows = process.platform === 'win32';
 
 if (serve) {
-  require('electron-reload')(__dirname, {});
+  require('electron-reload')(path.join(__dirname, '..'), {});
 }
 
 /**
@@ -38,7 +38,7 @@ function createWindow() {
 
     // Open the DevTools.
     if (serve) {
-      win.webContents.openDevTools();
+      (win as Electron.BrowserWindow).webContents.openDevTools();
     }
   });
 

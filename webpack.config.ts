@@ -7,9 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 
-const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin, DefinePlugin, HashedModuleIdsPlugin } = require('webpack');
 const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
-const { CommonsChunkPlugin, UglifyJsPlugin } = require('webpack').optimize;
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ['inline', 'polyfills', 'sw-register', 'styles', 'vendor', 'main'];
@@ -24,11 +22,11 @@ function getPlugins(): webpack.Plugin[] {
   // Always expose NODE_ENV to webpack, you can now use `process.env.NODE_ENV`
   // inside your code for any environment checks; UglifyJS will automatically
   // drop any unreachable code.
-  plugins.push(new DefinePlugin({
+  plugins.push(new webpack.DefinePlugin({
     'process.env.NODE_ENV': '"production"'
   }));
 
-  plugins.push(new NoEmitOnErrorsPlugin());
+  plugins.push(new webpack.NoEmitOnErrorsPlugin());
 
   plugins.push(new GlobCopyWebpackPlugin({
     'patterns': [
@@ -73,12 +71,11 @@ function getPlugins(): webpack.Plugin[] {
 
   plugins.push(new BaseHrefWebpackPlugin({}));
 
-  plugins.push(new CommonsChunkPlugin({
-    'name': 'inline',
-    'minChunks': null
+  plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    'name': 'inline'
   }));
 
-  plugins.push(new CommonsChunkPlugin({
+  plugins.push(new webpack.optimize.CommonsChunkPlugin({
     'name': 'vendor',
     'minChunks': (module: any) => module.resource && module.resource.startsWith(nodeModules),
     'chunks': [
@@ -91,7 +88,7 @@ function getPlugins(): webpack.Plugin[] {
     'disable': true
   }));
 
-  plugins.push(new LoaderOptionsPlugin({
+  plugins.push(new webpack.LoaderOptionsPlugin({
     'sourceMap': false,
     'options': {
       'postcss': [
@@ -129,7 +126,7 @@ function getPlugins(): webpack.Plugin[] {
   }));
 
   if (isProd) {
-    plugins.push(new HashedModuleIdsPlugin({
+    plugins.push(new webpack.HashedModuleIdsPlugin({
       'hashFunction': 'md5',
       'hashDigest': 'base64',
       'hashDigestLength': 4
@@ -144,7 +141,7 @@ function getPlugins(): webpack.Plugin[] {
       'tsConfigPath': 'src/tsconfig.app.json'
     }));
 
-    plugins.push(new UglifyJsPlugin({
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
       'mangle': {
         'screw_ie8': true
       },
