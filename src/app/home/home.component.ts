@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
       this.electron.send('ping');
       this.electron.listener$.subscribe(message => {
         if (message === 'pong') {
-          if (this.electron.shell) this.electron.shell.beep();
+          this.electron.shell.beep();
         }
       });
     }
