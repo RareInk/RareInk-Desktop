@@ -34,16 +34,16 @@ function createWindow() {
 
   // Show when window content is fully loaded
   win.once('ready-to-show', () => {
-    win.show();
+    (win as Electron.BrowserWindow).show();
+
+    // Open the DevTools.
+    if (serve) {
+      win.webContents.openDevTools();
+    }
   });
 
   // Build the application main menu.
   // setMainMenu();
-
-  // Open the DevTools.
-  if (serve) {
-    win.webContents.openDevTools();
-  }
 
   // Emitted when the window is closed.
   win.on('closed', () => {

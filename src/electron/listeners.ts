@@ -7,7 +7,7 @@ import { app, BrowserWindow, ipcMain, Menu } from 'electron';
  *    manipulates it.
  */
 function initMainListener(window: Electron.BrowserWindow) {
-  ipcMain.on('ELECTRON_BRIDGE_HOST', (event, msg) => {
+  ipcMain.on('ELECTRON_BRIDGE_HOST', (event: Electron.Event, msg: any) => {
     console.log(`[ELECTRON_BRIDGE_HOST] ${msg}`);
     if (msg === 'ping') {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');

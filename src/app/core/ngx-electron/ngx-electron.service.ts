@@ -20,7 +20,7 @@ export class NgxElectronService {
   constructor() {
     this.listener$ = this.listenerSubject.asObservable();
     if (this.electron) {
-      this.electron.ipcRenderer.on(ELECTRON_CLIENT, (event, msg) => {
+      this.electron.ipcRenderer.on(ELECTRON_CLIENT, (event: Electron.Event, msg: any) => {
         this.listenerSubject.next(msg);
       });
     }
@@ -31,52 +31,52 @@ export class NgxElectronService {
   }
 
   public send(data: any): void {
-    this.ipcRenderer.send(ELECTRON_HOST, data);
+    if (this.ipcRenderer) this.ipcRenderer.send(ELECTRON_HOST, data);
   }
 
-  public get ipcRenderer(): Electron.IpcRenderer {
-    return this.electron.ipcRenderer || null;
+  public get ipcRenderer(): Electron.IpcRenderer | undefined {
+    if (this.electron) return this.electron.ipcRenderer;
   }
 
-  public get desktopCapturer(): Electron.DesktopCapturer {
-    return this.electron.desktopCapturer || null;
+  public get desktopCapturer(): Electron.DesktopCapturer | undefined {
+    if (this.electron) return this.electron.desktopCapturer;
   }
 
-  public get webFrame(): Electron.WebFrame {
-    return this.electron.webFrame || null;
+  public get webFrame(): Electron.WebFrame | undefined {
+    if (this.electron) return this.electron.webFrame;
   }
 
-  public get remote(): Electron.Remote {
-    return this.electron.remote || null;
+  public get remote(): Electron.Remote | undefined {
+    if (this.electron) return this.electron.remote;
   }
 
-  public get clipboard(): Electron.Clipboard {
-    return this.electron.clipboard || null;
+  public get clipboard(): Electron.Clipboard | undefined {
+    if (this.electron) return this.electron.clipboard;
   }
 
-  public get crashReporter(): Electron.CrashReporter {
-    return this.electron.crashReporter || null;
+  public get crashReporter(): Electron.CrashReporter | undefined {
+    if (this.electron) return this.electron.crashReporter;
   }
 
-  public get nativeImage(): Electron.NativeImage {
-    return <any>this.electron.nativeImage || null;
+  public get nativeImage(): Electron.NativeImage | undefined {
+    if (this.electron) return this.electron.nativeImage as any;
   }
 
-  public get screen(): Electron.Screen {
-    return this.electron.screen || null;
+  public get screen(): Electron.Screen | undefined {
+    if (this.electron) return this.electron.screen;
   }
 
-  public get shell(): Electron.Shell {
-    return this.electron.shell || null;
+  public get shell(): Electron.Shell | undefined {
+    if (this.electron) return this.electron.shell;
   }
 
-  private get electron(): Electron.RendererInterface {
+  private get electron(): Electron.RendererInterface | undefined {
     if (!this._electron) {
       if (window && window.require) {
         this._electron = window.require('electron');
         return this._electron;
       }
-      return null;
+      return undefined;
     }
     return this._electron;
   }
