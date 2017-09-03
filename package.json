@@ -1,5 +1,6 @@
 {
   "name": "rareink-desktop",
+  "productName": "RareInk",
   "version": "0.0.0",
   "description": "The desktop version of the RareInk app. Open source.",
   "homepage": "https://github.com/RareInk/RareInk-Desktop",
