@@ -1,8 +1,11 @@
+.home {
+  min-height: 100%;
+}
+
 .container {
-  height: 100%;
+  padding: 50px 20px;
 
   .title {
     margin: 0;
-    padding: 50px 20px;
   }
 }
