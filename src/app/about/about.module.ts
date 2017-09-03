@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
-import { routes } from './dashboard.routing';
+import { AboutComponent } from './about.component';
+import { routes } from './about.routing';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -10,6 +10,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DashboardComponent]
+  declarations: [AboutComponent]
 })
-export class DashboardModule { }
+export class AboutModule { }
