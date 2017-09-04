@@ -43,7 +43,7 @@ function createWindow() {
   });
 
   // Build the application main menu.
-  // setMainMenu();
+  setMainMenu();
 
   // Emitted when the window is closed.
   win.on('closed', () => {

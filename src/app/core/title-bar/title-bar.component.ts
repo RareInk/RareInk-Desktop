@@ -9,17 +9,15 @@ import { NgxElectronService } from '../../core/ngx-electron';
 export class TitleBarComponent implements OnInit {
 
   // TODO: Make this dynamic, probably?
-  public title = 'RareInk'
+  public title = 'RareInk';
 
   constructor(private electron: NgxElectronService) { }
 
   onHamburgerMenuClick() {
     if (this.electron.isElectron) {
-      const remote = this.electron.remote;
+      const { remote } = this.electron;
       const menu = remote.Menu.getApplicationMenu();
-      menu.popup(remote.getCurrentWindow(), {
-        async: true
-      });
+      menu.popup(remote.getCurrentWindow(), {});
     }
   }
 
