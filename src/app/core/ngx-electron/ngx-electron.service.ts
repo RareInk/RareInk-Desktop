@@ -31,53 +31,47 @@ export class NgxElectronService {
   }
 
   public send(data: any): void {
-    if (this.ipcRenderer) this.ipcRenderer.send(ELECTRON_HOST, data);
+    this.ipcRenderer.send(ELECTRON_HOST, data);
   }
 
   public get ipcRenderer(): Electron.IpcRenderer {
-    return (this.electron as Electron.RendererInterface).ipcRenderer;
+    return this.electron.ipcRenderer;
   }
 
   public get desktopCapturer(): Electron.DesktopCapturer {
-    return (this.electron as Electron.RendererInterface).desktopCapturer;
+    return this.electron.desktopCapturer;
   }
 
   public get webFrame(): Electron.WebFrame {
-    return (this.electron as Electron.RendererInterface).webFrame;
+    return this.electron.webFrame;
   }
 
   public get remote(): Electron.Remote {
-    return (this.electron as Electron.RendererInterface).remote;
+    return this.electron.remote;
   }
 
   public get clipboard(): Electron.Clipboard {
-    return (this.electron as Electron.RendererInterface).clipboard;
+    return this.electron.clipboard;
   }
 
   public get crashReporter(): Electron.CrashReporter {
-    return (this.electron as Electron.RendererInterface).crashReporter;
+    return this.electron.crashReporter;
   }
 
   public get nativeImage(): Electron.NativeImage {
-    return (this.electron as Electron.RendererInterface).nativeImage as any;
+    return this.electron.nativeImage as any;
   }
 
   public get screen(): Electron.Screen {
-    return (this.electron as Electron.RendererInterface).screen;
+    return this.electron.screen;
   }
 
   public get shell(): Electron.Shell {
-    return (this.electron as Electron.RendererInterface).shell;
+    return this.electron.shell;
   }
 
-  private get electron(): Electron.RendererInterface | null {
-    if (!this._electron) {
-      if (window && window.require) {
-        this._electron = window.require('electron');
-        return this._electron;
-      }
-      return null;
-    }
+  private get electron(): Electron.RendererInterface {
+    if (this.isElectron) this._electron = window.require('electron');
     return this._electron;
   }
 
