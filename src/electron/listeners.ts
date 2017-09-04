@@ -12,10 +12,6 @@ function initMainListener(window: Electron.BrowserWindow) {
     if (msg === 'ping') {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
     }
-    if (msg === 'rareink:window:toggle-menu') {
-      const menu = Menu.getApplicationMenu();
-      menu.popup();
-    }
     if (msg === 'rareink:window:minimize') {
       window.minimize();
     }

@@ -15,7 +15,11 @@ export class TitleBarComponent implements OnInit {
 
   onHamburgerMenuClick() {
     if (this.electron.isElectron) {
-      this.electron.send('rareink:window:toggle-menu');
+      const remote = this.electron.remote;
+      const menu = remote.Menu.getApplicationMenu();
+      menu.popup(remote.getCurrentWindow(), {
+        async: true
+      });
     }
   }
 
