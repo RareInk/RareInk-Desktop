@@ -8,7 +8,7 @@ import { NgxElectronService } from '../core/ngx-electron';
 })
 export class AboutComponent implements OnInit {
 
-  private appVersion: string;
+  public appVersion: string;
 
   constructor(private electron: NgxElectronService) {
     if (this.electron.isElectron) {
