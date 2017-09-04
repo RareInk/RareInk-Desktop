@@ -7,9 +7,14 @@ import { NgxElectronService } from '../core/ngx-electron';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = `App works!`;
+  public readonly title = `App works!`;
+  public runmode: string;
 
-  constructor(private electron: NgxElectronService) {}
+  constructor(private electron: NgxElectronService) {
+    this.runmode = this.electron.isElectron
+      ? 'Running as an Electron app.'
+      : 'Running as a web app.';
+  }
 
   doTheBeepBeep(): void {
     if (this.electron.isElectron) {
