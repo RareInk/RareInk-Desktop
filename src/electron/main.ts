@@ -32,6 +32,9 @@ function createWindow() {
   // and load the index.html of the app.
   win.loadURL(path.join('file://' + __dirname, '../index.html'));
 
+  // Build the application main menu.
+  setMainMenu(win);
+
   // Show when window content is fully loaded
   win.once('ready-to-show', () => {
     (win as Electron.BrowserWindow).show();
@@ -41,9 +44,6 @@ function createWindow() {
       (win as Electron.BrowserWindow).webContents.openDevTools();
     }
   });
-
-  // Build the application main menu.
-  setMainMenu();
 
   // Emitted when the window is closed.
   win.on('closed', () => {

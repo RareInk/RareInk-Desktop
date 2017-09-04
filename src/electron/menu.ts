@@ -1,11 +1,11 @@
-import { app, Menu } from 'electron';
+import { app, Menu, BrowserWindow, shell } from 'electron';
 
 const isWindows = process.platform === 'win32';
 
 /**
  * Build the main menu of our app.
  */
-function setMainMenu() {
+function setMainMenu(window: Electron.BrowserWindow) {
   const template: Electron.MenuItemConstructorOptions[] = [
     {
       label: isWindows ? 'File' : app.getName(),
@@ -22,15 +22,40 @@ function setMainMenu() {
     {
       label: 'Edit',
       submenu: [
-        {role: 'undo'},
-        {role: 'redo'},
-        {type: 'separator'},
-        {role: 'cut'},
-        {role: 'copy'},
-        {role: 'paste'},
-        {role: 'pasteandmatchstyle'},
-        {role: 'delete'},
-        {role: 'selectall'}
+        {
+          role: 'undo',
+          accelerator: 'CmdOrCtrl+Z'
+        },
+        {
+          role: 'redo',
+          accelerator: 'CmdOrCtrl+Y'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'cut',
+          accelerator: 'CmdOrCtrl+X'
+        },
+        {
+          role: 'copy',
+          accelerator: 'CmdOrCtrl+C'
+        },
+        {
+          role: 'paste',
+          accelerator: 'CmdOrCtrl+V'
+        },
+        {
+          role: 'pasteandmatchstyle',
+          accelerator: 'CmdOrCtrl+Shift+V'
+        },
+        {
+          role: 'delete'
+        },
+        {
+          role: 'selectall',
+          accelerator: 'CmdOrCtrl+A'
+        }
       ]
     },
     {
@@ -45,6 +70,22 @@ function setMainMenu() {
         {role: 'zoomout'},
         {type: 'separator'},
         {role: 'togglefullscreen'}
+      ]
+    },
+    {
+      role: 'window',
+      submenu: [
+        {role: 'minimize'},
+        {role: 'close'}
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'About RareInk',
+          click: () => { window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:menu:open-about') }
+        }
       ]
     }
   ];
