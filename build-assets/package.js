@@ -1,20 +1,16 @@
 "use strict";
 
-var packager = require('electron-packager');
 const builder = require('electron-builder');
 const pkg = require('../package.json');
 const argv = require('minimist')(process.argv.slice(1));
 
-const appName = argv.name || pkg.name;
-const buildVersion = pkg.version || '1.0';
 const shouldUseAsar = argv.asar || false;
-const shouldBuildAll = argv.all || false;
-const arch = argv.arch || 'all';
 const Platform = builder.Platform;
 
 const DEFAULT_OPTS = {
   appId: 'com.RareInk.RareInkDesktop',
   files: 'dist/**/*',
+  asar: shouldUseAsar,
   directories: {
     output: './app-builds'
   },
