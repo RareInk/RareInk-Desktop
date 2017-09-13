@@ -7,6 +7,7 @@ const argv = require('minimist')(process.argv.slice(1));
 const shouldUseAsar = argv.asar || false;
 const Platform = builder.Platform;
 
+/** @type {*} */
 const DEFAULT_OPTS = {
   appId: 'com.RareInk.RareInkDesktop',
   files: 'dist/**/*',
