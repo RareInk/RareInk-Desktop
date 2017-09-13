@@ -84,7 +84,7 @@ function setMainMenu(window: Electron.BrowserWindow) {
       submenu: [
         {
           label: 'About RareInk',
-          click: () => { window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:menu:open-about') }
+          click: () => { window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:menu:open-about'); }
         }
       ]
     }
