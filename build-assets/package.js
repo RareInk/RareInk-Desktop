@@ -2,7 +2,7 @@
 
 var packager = require('electron-packager');
 const builder = require('electron-builder');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const argv = require('minimist')(process.argv.slice(1));
 
 const appName = argv.name || pkg.name;
@@ -17,6 +17,14 @@ const DEFAULT_OPTS = {
   files: 'dist/**/*',
   directories: {
     output: './app-builds'
+  },
+  win: {
+    target: [
+      {
+        target: 'zip',
+        arch: ['x64', 'ia32']
+      }
+    ]
   }
 };
 
@@ -39,7 +47,7 @@ const buildPlatform = () => {
 };
 
 builder.build({
-  targets: buildPlatform,
+  targets: buildPlatform(),
   config: DEFAULT_OPTS
 }).then(() => {
   console.log('Application packaged successfully!');
