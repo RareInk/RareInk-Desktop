@@ -165,26 +165,3 @@ blockquote {
     padding-left: 1.25rem;
   }
 }
-
-// Splash screen
-//
-// What to show when the application is still on its loading state. Might not
-// show up with the way we handle window showing atm.
-
-.splash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  background-color: $brand-color-wine-red;
-
-  .splash-inner {
-    width: 100px;
-    margin: 40px auto;
-
-    .ink,
-    .wine {
-      fill: $color-white;
-    }
-  }
-}
