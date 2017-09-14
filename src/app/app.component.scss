@@ -16,8 +16,11 @@
 
 .main {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-direction: row;
+  flex: 1;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   // Make sure whole app doesn't overlap with the titlebar.
-  padding-top: 31px;
+  height: calc(100% - 31px);
+  margin-top: 31px;
 }

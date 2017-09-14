@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { NgxElectronService } from './ngx-electron';
 import { TitleBarComponent } from './title-bar';
+import { ProjectSwitcherComponent } from './project-switcher/project-switcher.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    TitleBarComponent
+    TitleBarComponent,
+    ProjectSwitcherComponent
   ],
   providers: [NgxElectronService],
   exports: [
-    TitleBarComponent
+    TitleBarComponent,
+    ProjectSwitcherComponent
   ]
 })
 export class CoreModule { }

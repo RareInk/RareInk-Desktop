@@ -3,32 +3,30 @@
   http://reactdesktop.js.org/demo/
 -->
 
-<div class="title-bar">
-  <div class="window-controls">
-    <a title="Menu" class="window-controls__button toggle-menu" (click)="onHamburgerMenuClick()">
-      <svg x="0px" y="0px" viewBox="0 0 10.2 9" style="width: 10px; height: 10px;">
-        <line stroke="#ffffff" stroke-width="1" x1="0" y1="0" x2="10.2" y2="0"/>
-        <line stroke="#ffffff" stroke-width="1" x1="0" y1="4" x2="10.2" y2="4"/>
-        <line stroke="#ffffff" stroke-width="1" x1="0" y1="8" x2="10.2" y2="8"/>
-      </svg>
-    </a>
-  </div>
-  <div class="title-bar__title">{{title}}</div>
-  <div class="window-controls">
-    <a title="Minimize" class="window-controls__button minimize" (click)="onMinimizeClick()">
-      <svg x="0px" y="0px" viewBox="0 0 10.2 1" style="width: 10px; height: 10px;">
-        <line stroke="#ffffff" stroke-width="1" x1="0" y1="0" x2="10.2" y2="0"/>
-      </svg>
-    </a>
-    <a title="Maximize" class="window-controls__button maximize" (click)="onMaximizeClick()">
-      <svg x="0px" y="0px" viewBox="0 0 10.2 10.1" style="width: 10px; height: 10px;">
-        <path fill="#ffffff" d="M0,0v10.1h10.2V0H0z M9.2,9.2H1.1V1h8.1V9.2z"></path>
-      </svg>
-    </a>
-    <a title="Close" class="window-controls__button close" (click)="onCloseClick()">
-      <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style="width: 10px; height: 10px;">
-        <polygon fill="#ffffff" points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1 "></polygon>
-      </svg>
-    </a>
-  </div>
+<div class="window-controls">
+  <a title="Menu" class="window-controls__button toggle-menu" (click)="onHamburgerMenuClick()">
+    <svg x="0px" y="0px" viewBox="0 0 10.2 9" style="width: 10px; height: 10px;">
+      <line stroke="#ffffff" stroke-width="1" x1="0" y1="0" x2="10.2" y2="0" />
+      <line stroke="#ffffff" stroke-width="1" x1="0" y1="4" x2="10.2" y2="4" />
+      <line stroke="#ffffff" stroke-width="1" x1="0" y1="8" x2="10.2" y2="8" />
+    </svg>
+  </a>
+</div>
+<div class="title">{{title}}</div>
+<div class="window-controls">
+  <a title="Minimize" class="window-controls__button minimize" (click)="onMinimizeClick()">
+    <svg x="0px" y="0px" viewBox="0 0 10.2 1" style="width: 10px; height: 10px;">
+      <line stroke="#ffffff" stroke-width="1" x1="0" y1="0" x2="10.2" y2="0" />
+    </svg>
+  </a>
+  <a title="Maximize" class="window-controls__button maximize" (click)="onMaximizeClick()">
+    <svg x="0px" y="0px" viewBox="0 0 10.2 10.1" style="width: 10px; height: 10px;">
+      <path fill="#ffffff" d="M0,0v10.1h10.2V0H0z M9.2,9.2H1.1V1h8.1V9.2z"></path>
+    </svg>
+  </a>
+  <a title="Close" class="window-controls__button close" (click)="onCloseClick()">
+    <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style="width: 10px; height: 10px;">
+      <polygon fill="#ffffff" points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1 "></polygon>
+    </svg>
+  </a>
 </div>
