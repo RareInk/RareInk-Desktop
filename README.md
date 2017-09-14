@@ -4,20 +4,13 @@
 
 ## Introduction
 
-Bootstrap and package your project with Angular 4(+) and Electron (Typescript + SASS + Hot Reload) for creating Desktop applications.
+**TODO** *Brief introduction to the app.*
 
 Currently runs with:
 
-- Angular v4.3.5
-- Angular CLI v1.3.1
+- Angular v4.3.5 (with Angular CLI)
 - Electron v1.7.5
-- Electron Packager v8.7.2
-
-With this sample, you can:
-
-- Run your app in a local development environment with Electron & Hot reload
-- Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & macOS
+- electron-builder v19.27.7
 
 ### Getting Started
 
@@ -35,8 +28,7 @@ $ npm install
 
 There is an issue with `yarn` and `node_modules` that are only used in electron on the backend when the application is built by the packager. Please use `npm` as dependencies manager.
 
-If you want to generate Angular components with Angular CLI, you **MUST** install `@angular/cli` in npm global context.
-Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
+If you want to generate Angular components with Angular CLI, you **MUST** install `@angular/cli` in npm global context. Please follow [the Angular CLI documentation](https://github.com/angular/angular-cli) if you have used an older version of the Angular CLI before.
 
 ``` bash
 npm install -g @angular/cli
@@ -54,33 +46,31 @@ $ npm start
 $ npm run electron:serve
 ```
 
-Voila! You can use your Angular + Electron app in a local development environment with hot reload!
+Voila! You can now run RareInk in your local development environment, with hot reload too!
 
-The application code is managed by `main.ts`. In this sample, the app runs with a simple Electron window and "Developer Tools" is open.
-The Angular component contains an example of Electron and NodeJS native lib import. See [Use NodeJS Native libraries](#use-nodejs-native-libraries) charpter if you want to import other native libraries in your project.
-You can desactivate "Developer Tools" by commenting `win.webContents.openDevTools();` in `main.ts`.
+The Angular component contains an example of Electron and NodeJS native lib import. See [Use NodeJS Native libraries](#use-nodejs-native-libraries) if you want to import other native libraries in your project.
 
 ### To build for production
 
 * Using development variables (environments/index.ts): `npm run electron:dev`
 * Using production variables (environments/index.prod.ts): `npm run electron:prod`
 
-Your built files are in the /dist folder.
+Your built files are in the `/dist` folder.
 
 ### Included Commands
 
-|Command|Description|
-|--|--|
-|`npm run start:web`| Execute the app in the brower |
-|`npm run electron:linux`| Builds your application and creates an app consumable on linux system |
-|`npm run electron:windows`| On Windows, builds your application and creates an app consumable in windows 32/64 bit systems |
-|`npm run electron:mac`|  On macOS, builds your application and generates a `.app` file of your application that can be run on Ma |
+|Command | Description |
+| -- | -- |
+| `npm run start:web` | Execute the app in the browser. |
+| `npm run electron:linux` | Builds the app and creates an executable for Linux. |
+| `npm run electron:windows` | Builds the app and creates an executable for 32-bit and 64-bit Windows systems. |
+| `npm run electron:mac` | Builds the app and creates an executable for macOS. |
 
 **Your application is optimised. Only the files of /dist folder are included in the executable.**
 
 ### Use NodeJS Native libraries
 
-Actually Angular CLI doesn't seem to be able to import nodeJS native libs or electron libs at compile time (Webpack error). This is (one of) the reason why webpack.config was ejected of ng-cli.
+Angular CLI doesn't seem to be able to import nodeJS native libs or electron libs at compile time (Webpack error). This is (one of) the reason why webpack.config was ejected of ng-cli.
 If you need to use NodeJS native libraries, you **MUST** add it manually in the file `webpack.config.js` in root folder :
 
 ```javascript
@@ -96,7 +86,7 @@ Notice that all NodeJS v7 native libs are already added in this sample. Feel fre
 
 ### Browser mode
 
-Maybe you want to execute the application in the browser (WITHOUT HOT RELOAD ACTUALLY...)? You can do it with `npm run start:web`.
+To run the app in your browser, run `npm run start:web`.
 
 Note that you can't use Electron or NodeJS native libraries in this case. Please check `providers/electron.service.ts` to watch how conditional import of electron/Native libraries is done.
 
@@ -104,10 +94,21 @@ Note that you can't use Electron or NodeJS native libraries in this case. Please
 
 You can find end-to-end tests in /e2e folder.
 
-You can run tests with the command lines below:
+```bash
+# First, start a web server on port 4200
+$ npm run start:web
 
-- **in a terminal window** -> First, start a web server on port 4200 : `npm run start:web`
-- **in another terminal window** -> Then, launch Protractor (E2E framework): `npm run e2e`
+# Then in another terminal window, launch Protractor (E2E framework)
+$ npm run e2e
+```
+
+## Contributors
+
+# Contributors
+
+[<img alt="Resi Respati" src="https://avatars2.githubusercontent.com/u/5663877?v=3&s=117" width="117">](https://github.com/resir014) | [<img alt="Mhyre" src="https://avatars2.githubusercontent.com/u/30327817?v=3&s=117" width="117">](https://github.com/eryhM)
+| --- | --- |
+| [Resi Respati](https://github.com/resir014) | [Mhyre](https://github.com/eryhM) |
 
 ## Special thanks
 
