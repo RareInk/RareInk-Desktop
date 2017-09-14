@@ -9,8 +9,8 @@ import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 function initMainListener(window: Electron.BrowserWindow) {
   ipcMain.on('ELECTRON_BRIDGE_HOST', (event: Electron.Event, msg: any) => {
     console.log(`[ELECTRON_BRIDGE_HOST] ${msg}`);
-    if (msg === 'ping') {
-      event.sender.send('ELECTRON_BRIDGE_CLIENT', 'pong');
+    if (msg === 'rareink:generic:ping') {
+      event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:generic:pong');
     }
     if (msg === 'rareink:window:minimize') {
       window.minimize();

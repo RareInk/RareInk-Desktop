@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
 
   doTheBeepBeep(): void {
     if (this.electron.isElectron) {
-      this.electron.send('ping');
+      this.electron.send('rareink:generic:ping');
       this.electron.listener$.subscribe(message => {
-        if (message === 'pong') {
+        if (message === 'rareink:generic:pong') {
           this.electron.shell.beep();
         }
       });
