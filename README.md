@@ -104,10 +104,8 @@ $ npm run e2e
 
 ## Contributors
 
-# Contributors
-
-[<img alt="Resi Respati" src="https://avatars2.githubusercontent.com/u/5663877?v=3&s=117" width="117">](https://github.com/resir014) | [<img alt="Mhyre" src="https://avatars2.githubusercontent.com/u/30327817?v=3&s=117" width="117">](https://github.com/eryhM)
-| --- | --- |
+| [<img alt="Resi Respati" src="https://avatars2.githubusercontent.com/u/5663877?v=3&s=117" width="117">](https://github.com/resir014) | [<img alt="Mhyre" src="https://avatars2.githubusercontent.com/u/30327817?v=3&s=117" width="117">](https://github.com/eryhM) |
+:---:---:
 | [Resi Respati](https://github.com/resir014) | [Mhyre](https://github.com/eryhM) |
 
 ## Special thanks
