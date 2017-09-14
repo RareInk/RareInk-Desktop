@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProjectSwitcherComponent } from './project-switcher.component';
 
@@ -8,6 +9,7 @@ describe('ProjectSwitcherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ ProjectSwitcherComponent ]
     })
     .compileComponents();

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TitleBarComponent } from './title-bar.component';
+import { CoreModule } from '../core.module';
+import { NgxElectronService } from '../ngx-electron';
 
 describe('TitleBarComponent', () => {
   let component: TitleBarComponent;
@@ -8,6 +10,7 @@ describe('TitleBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [ NgxElectronService ],
       declarations: [ TitleBarComponent ]
     })
     .compileComponents();
