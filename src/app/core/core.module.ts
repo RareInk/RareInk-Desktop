@@ -15,7 +15,6 @@ import { ProjectSwitcherComponent } from './project-switcher/project-switcher.co
     TitleBarComponent,
     ProjectSwitcherComponent
   ],
-  providers: [NgxElectronService],
   exports: [
     TitleBarComponent,
     ProjectSwitcherComponent
@@ -33,7 +32,8 @@ export class CoreModule {
 
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CoreModule
+      ngModule: CoreModule,
+      providers: [NgxElectronService]
     };
   }
 
