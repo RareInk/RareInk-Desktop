@@ -13,6 +13,10 @@
   -webkit-app-region: drag;
   cursor: default;
 
+  &.hidden {
+    display: none;
+  }
+
   .title {
     flex: 1 1 0%;
     padding-left: 12px;

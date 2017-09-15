@@ -13,8 +13,8 @@ export interface State {
 }
 
 const initialState: State = {
-  showTitleBar: true,
-  isElectron: true
+  showTitleBar: false,
+  isElectron: false
 };
 
 export function reducer(state: State = initialState, action: Actions): State {

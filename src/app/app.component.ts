@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { NgxElectronService } from './core/ngx-electron';
 import * as fromRoot from './store';
 import * as fromLayout from './store/layout/layout.reducer';
+import * as layout from './store/layout/layout.actions';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   ) {
     if (this.electron.isElectron) {
       console.log('Running as an Electron app.');
+      this.store.dispatch(new layout.SetElectronModeAction());
       this.electron.ipcRenderer.on('ELECTRON_BRIDGE_CLIENT', (event: Electron.Event, msg: any) => {
         if (msg === 'rareink:menu:open-about') {
           this.router.navigate(['/about']);
@@ -29,6 +31,7 @@ export class AppComponent {
       });
     } else {
       console.log('Running as a web app.');
+      this.store.dispatch(new layout.SetWebModeAction());
     }
 
     // Selectors can be applied with the `select` operator which passes the
