@@ -1,18 +1,29 @@
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createSelector,
+  createFeatureSelector,
+  MetaReducer
+} from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
+import * as fromLayout from './layout/layout.reducer';
 import { environment } from '../../environments';
 
 // Define new stores here...
 // tslint:disable-next-line:no-empty-interface
-export interface IAppState {}
+export interface State {
+  layout: fromLayout.State;
+}
 
 // ...as well as its reducers here.
-export const reducers: ActionReducerMap<IAppState> = {};
+export const reducers: ActionReducerMap<State> = {
+  layout: fromLayout.reducer
+};
 
 // Log all actions
-export function logger(reducer: ActionReducer<IAppState>): ActionReducer<any, any> {
-  return function(state: IAppState, action: any): IAppState {
+export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
+  return function(state: State, action: any): State {
     console.log('state', state);
     console.log('action', action);
 
@@ -25,6 +36,6 @@ export function logger(reducer: ActionReducer<IAppState>): ActionReducer<any, an
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
-export const metaReducers: MetaReducer<IAppState>[] = !environment.production
+export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [logger, storeFreeze]
   : [];
