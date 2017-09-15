@@ -26,7 +26,7 @@ import { SharedModule } from './shared';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
+    CoreModule.forRoot(),
     SharedModule,
     FormsModule,
     HttpModule,
