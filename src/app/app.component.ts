@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { NgxElectronService } from './core/ngx-electron';
 import * as fromRoot from './store';
@@ -14,7 +15,9 @@ import * as layout from './store/layout/layout.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isElectron$: Observable<boolean>;
+  public isElectron: boolean;
+  public isElectron$: Observable<boolean>;
+  public subscription$: Subscription;
 
   constructor(
     private electron: NgxElectronService,
@@ -37,5 +40,9 @@ export class AppComponent {
     // Selectors can be applied with the `select` operator which passes the
     // state tree to the provided selector.
     this.isElectron$ = this.store.select(fromLayout.getIsElectron);
+    this.subscription$ = this.isElectron$.subscribe(isElectron => {
+      // we don't want to show the titlebar on a non-Electron environment, so we flip the boolean.
+      this.isElectron = isElectron;
+    });
   }
 }
