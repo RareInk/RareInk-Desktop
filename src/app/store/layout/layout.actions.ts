@@ -22,7 +22,5 @@ export class SetWebModeAction implements Action {
 }
 
 export type Actions
-  = ShowTitlebarAction
-  | HideTitlebarAction
-  | SetElectronModeAction
+  = SetElectronModeAction
   | SetWebModeAction;

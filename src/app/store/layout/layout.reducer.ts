@@ -1,36 +1,20 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import {
-  SHOW_TITLEBAR,
-  HIDE_TITLEBAR,
   SET_ELECTRON_MODE,
   SET_WEB_MODE,
   Actions
 } from './layout.actions';
 
 export interface State {
-  showTitleBar: boolean;
   isElectron: boolean;
 }
 
 const initialState: State = {
-  showTitleBar: false,
   isElectron: false
 };
 
 export function reducer(state: State = initialState, action: Actions): State {
   switch (action.type) {
-    case SHOW_TITLEBAR: {
-      return {
-        ...state,
-        showTitleBar: true
-      };
-    }
-    case HIDE_TITLEBAR: {
-      return {
-        ...state,
-        showTitleBar: false
-      };
-    }
     case SET_ELECTRON_MODE: {
       return {
         ...state,

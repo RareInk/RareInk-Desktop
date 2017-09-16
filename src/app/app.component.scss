@@ -8,10 +8,7 @@
   user-select: none;
   cursor: default;
 
-  // Add a tiny border if we're running inside of Electron.
   &.is-electron {
-    border: 1px solid lighten($brand-color-wine-red, 5%);
-
     .main {
       // Make sure whole app doesn't overlap with the titlebar.
       height: calc(100% - 31px);
