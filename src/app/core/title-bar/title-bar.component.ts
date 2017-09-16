@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -12,7 +12,7 @@ import * as fromLayout from '../../store/layout/layout.reducer';
   templateUrl: './title-bar.component.html',
   styleUrls: ['./title-bar.component.scss']
 })
-export class TitleBarComponent implements OnInit {
+export class TitleBarComponent implements OnInit, OnDestroy {
 
   // TODO: Make this dynamic, probably?
   public title = 'RareInk';
@@ -61,4 +61,9 @@ export class TitleBarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  ngOnDestroy() {
+    // Unsubscribe our subscription to prevent memory leaks.
+    this.subscription$.unsubscribe();
+  }
 }

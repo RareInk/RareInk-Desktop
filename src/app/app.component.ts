@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +14,7 @@ import * as layout from './store/layout/layout.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   public isElectron: boolean;
   public isElectron$: Observable<boolean>;
   public subscription$: Subscription;
@@ -44,5 +44,10 @@ export class AppComponent {
       // we don't want to show the titlebar on a non-Electron environment, so we flip the boolean.
       this.isElectron = isElectron;
     });
+  }
+
+  public ngOnDestroy() {
+    // Unsubscribe our subscription to prevent memory leaks.
+    this.subscription$.unsubscribe();
   }
 }
