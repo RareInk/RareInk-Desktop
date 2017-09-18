@@ -5,6 +5,8 @@ import {
   Actions
 } from './layout.actions';
 
+// States + initial states
+
 export interface State {
   isElectron: boolean;
 }
@@ -12,6 +14,8 @@ export interface State {
 const initialState: State = {
   isElectron: false
 };
+
+// Reducer
 
 export function reducer(state: State = initialState, action: Actions): State {
   switch (action.type) {
@@ -32,6 +36,8 @@ export function reducer(state: State = initialState, action: Actions): State {
     }
   }
 }
+
+// Selectors
 
 export const getLayoutState = createFeatureSelector<State>('layout');
 

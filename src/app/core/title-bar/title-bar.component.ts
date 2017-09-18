@@ -17,7 +17,6 @@ export class TitleBarComponent implements OnInit, OnDestroy {
   // TODO: Make this dynamic, probably?
   public title = 'RareInk';
   public subscription$: Subscription;
-  public isElectron$: Observable<boolean>;
 
   @HostBinding('class.hidden') public hidden: boolean;
 
@@ -25,10 +24,9 @@ export class TitleBarComponent implements OnInit, OnDestroy {
     private electron: NgxElectronService,
     private store: Store<fromRoot.State>
   ) {
-    this.isElectron$ = this.store.select(fromLayout.getIsElectron);
-    this.subscription$ = this.isElectron$.subscribe(hide => {
+    this.subscription$ = this.store.subscribe(subscribedStore => {
       // we don't want to show the titlebar on a non-Electron environment, so we flip the boolean.
-      this.hidden = !hide;
+      this.hidden = !subscribedStore.layout.isElectron;
     });
   }
 

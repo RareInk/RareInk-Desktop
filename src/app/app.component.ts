@@ -16,7 +16,6 @@ import * as layout from './store/layout/layout.actions';
 })
 export class AppComponent implements OnDestroy {
   public isElectron: boolean;
-  public isElectron$: Observable<boolean>;
   public subscription$: Subscription;
 
   constructor(
@@ -39,10 +38,8 @@ export class AppComponent implements OnDestroy {
 
     // Selectors can be applied with the `select` operator which passes the
     // state tree to the provided selector.
-    this.isElectron$ = this.store.select(fromLayout.getIsElectron);
-    this.subscription$ = this.isElectron$.subscribe(isElectron => {
-      // we don't want to show the titlebar on a non-Electron environment, so we flip the boolean.
-      this.isElectron = isElectron;
+    this.subscription$ = this.store.subscribe(subscribedStore => {
+      this.isElectron = subscribedStore.layout.isElectron;
     });
   }
 
