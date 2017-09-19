@@ -16,6 +16,7 @@ import * as layout from './store/layout/layout.actions';
 })
 export class AppComponent implements OnDestroy {
   public isElectron: boolean;
+  public platform: string;
   public subscription$: Subscription;
 
   constructor(
@@ -36,15 +37,32 @@ export class AppComponent implements OnDestroy {
       this.store.dispatch(new layout.SetWebModeAction());
     }
 
+    this.determinePlatform();
+
     // Selectors can be applied with the `select` operator which passes the
     // state tree to the provided selector.
     this.subscription$ = this.store.subscribe(subscribedStore => {
       this.isElectron = subscribedStore.layout.isElectron;
+      this.platform = subscribedStore.layout.platform;
     });
   }
 
   public ngOnDestroy() {
     // Unsubscribe our subscription to prevent memory leaks.
     this.subscription$.unsubscribe();
+  }
+
+  /**
+   * Determines the platform the Electron app is running on.
+   *
+   * @private
+   * @memberof AppComponent
+   */
+  private determinePlatform() {
+    if (this.electron.isElectron) {
+      this.store.dispatch(new layout.SetPlatformAction(this.electron.remote.getGlobal('platform')));
+    } else {
+      this.store.dispatch(new layout.SetPlatformAction('web'));
+    }
   }
 }

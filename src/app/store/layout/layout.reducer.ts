@@ -2,6 +2,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import {
   SET_ELECTRON_MODE,
   SET_WEB_MODE,
+  SET_PLATFORM,
   Actions
 } from './layout.actions';
 
@@ -9,10 +10,12 @@ import {
 
 export interface State {
   isElectron: boolean;
+  platform: string;
 }
 
 const initialState: State = {
-  isElectron: false
+  isElectron: false,
+  platform: ''
 };
 
 // Reducer
@@ -29,6 +32,12 @@ export function reducer(state: State = initialState, action: Actions): State {
       return {
         ...state,
         isElectron: false
+      };
+    }
+    case SET_PLATFORM: {
+      return {
+        ...state,
+        platform: action.payload
       };
     }
     default: {

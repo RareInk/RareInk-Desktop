@@ -1,5 +1,9 @@
-<div class="app-wrapper" [ngClass]="{ 'is-electron': isElectron }">
-  <rareink-ui-title-bar></rareink-ui-title-bar>
+<div class="app-wrapper" [ngClass]="{
+  'is-electron': isElectron,
+  'platform-win32': platform === 'win32',
+  'platform-web': platform === 'web'
+}">
+  <rareink-ui-title-bar *ngIf="isElectron"></rareink-ui-title-bar>
 
   <main class="main">
     <rareink-ui-project-switcher></rareink-ui-project-switcher>
