@@ -1,0 +1,35 @@
+@import "~styles/variables";
+@import "~styles/mixins";
+
+// Splash screen
+//
+// What to show when the application is still on its loading state. Might not
+// show up with the way we handle window showing atm.
+
+:host {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background-color: $brand-color-wine-red;
+  z-index: 1;
+
+  &.hidden {
+    display: none;
+  }
+
+  .splash-screen {
+    width: 100px;
+    margin: 40px auto;
+
+    .ink,
+    .wine {
+      fill: $color-white;
+    }
+  }
+}

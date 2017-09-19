@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { NgxElectronService } from './ngx-electron';
 import { TitleBarComponent } from './title-bar';
-import { ProjectSwitcherComponent } from './project-switcher/project-switcher.component';
+import { ProjectSwitcherComponent } from './project-switcher';
+import { SplashScreenComponent } from './splash-screen';
 
 @NgModule({
   imports: [
@@ -13,11 +14,13 @@ import { ProjectSwitcherComponent } from './project-switcher/project-switcher.co
   ],
   declarations: [
     TitleBarComponent,
-    ProjectSwitcherComponent
+    ProjectSwitcherComponent,
+    SplashScreenComponent
   ],
   exports: [
     TitleBarComponent,
-    ProjectSwitcherComponent
+    ProjectSwitcherComponent,
+    SplashScreenComponent
   ]
 })
 export class CoreModule {
