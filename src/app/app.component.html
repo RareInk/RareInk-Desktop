@@ -5,7 +5,7 @@
   'platform-darwin': platform === 'darwin',
   'platform-web': platform === 'web'
 }">
-  <rareink-ui-title-bar *ngIf="isElectron"></rareink-ui-title-bar>
+  <rareink-ui-title-bar *ngIf="isElectron && platform === 'win32'"></rareink-ui-title-bar>
 
   <main class="main">
     <rareink-ui-project-switcher></rareink-ui-project-switcher>

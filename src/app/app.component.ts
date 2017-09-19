@@ -17,7 +17,6 @@ import * as layout from './store/layout/layout.actions';
 export class AppComponent implements OnDestroy {
   public isElectron: boolean;
   public platform: string;
-  public titlebarVisible: boolean = this.isElectron && this.platform === 'win32';
   public subscription$: Subscription;
 
   constructor(
