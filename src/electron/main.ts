@@ -12,6 +12,9 @@ if (serve) {
   require('electron-reload')(path.join(__dirname, '..'), {});
 }
 
+// Set Electron globals here.
+global.platform = process.platform;
+
 /**
  * Creates the browser window.
  */
