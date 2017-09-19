@@ -1,6 +1,8 @@
 <div class="app-wrapper" [ngClass]="{
   'is-electron': isElectron,
   'platform-win32': platform === 'win32',
+  'platform-linux': platform === 'linux',
+  'platform-darwin': platform === 'darwin',
   'platform-web': platform === 'web'
 }">
   <rareink-ui-title-bar *ngIf="isElectron"></rareink-ui-title-bar>
