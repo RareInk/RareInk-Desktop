@@ -4,7 +4,6 @@
 :host {
   display: flex;
   align-items: center;
-  position: fixed;
   width: 100%;
   height: 31px;
   background-color: darken($brand-color-wine-red, 5%);
@@ -45,6 +44,7 @@
 
       &.minimize,
       &.maximize,
+      &.restore,
       &.toggle-menu {
         &:hover {
           transition: background-color 0.1s;
