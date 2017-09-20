@@ -10,7 +10,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule, SharedModule],
+      imports: [CoreModule.forRoot(), SharedModule],
       declarations: [ AboutComponent ]
     })
     .compileComponents();

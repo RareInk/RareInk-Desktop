@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NgxElectronService } from '../core/ngx-electron';
 
 @Component({
@@ -11,9 +12,12 @@ export class HomeComponent implements OnInit {
   public runmode: string;
 
   constructor(private electron: NgxElectronService) {
-    this.runmode = this.electron.isElectron
-      ? 'Running as an Electron app.'
-      : 'Running as a web app.';
+    if (this.electron.isElectron) {
+      const os = this.electron.remote.require('os');
+      this.runmode = `Running as an Electron app on ${os.platform()}.`;
+    } else {
+      this.runmode = 'Running as a web app.';
+    }
   }
 
   doTheBeepBeep(): void {
