@@ -5,6 +5,7 @@ export const HIDE_TITLEBAR = 'layout/HIDE_TITLEBAR';
 export const SET_ELECTRON_MODE = 'layout/SET_ELECTRON_MODE';
 export const SET_WEB_MODE = 'layout/SET_WEB_MODE';
 export const SET_PLATFORM = 'layout/SET_PLATFORM';
+export const SET_WINDOW_MAXIMIZED_STATE = 'layout/SET_WINDOW_MAXIMIZED_STATE';
 
 export class ShowTitlebarAction implements Action {
   readonly type = SHOW_TITLEBAR;
@@ -28,7 +29,14 @@ export class SetPlatformAction implements Action {
   constructor (public payload: string) {}
 }
 
+export class SetWindowMaximizedStateAction implements Action {
+  readonly type = SET_WINDOW_MAXIMIZED_STATE;
+
+  constructor (public payload: boolean) {}
+}
+
 export type Actions
   = SetElectronModeAction
   | SetWebModeAction
-  | SetPlatformAction;
+  | SetPlatformAction
+  | SetWindowMaximizedStateAction;

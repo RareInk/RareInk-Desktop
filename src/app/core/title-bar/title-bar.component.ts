@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -6,6 +6,7 @@ import { NgxElectronService } from '../../core/ngx-electron';
 
 import * as fromRoot from '../../store';
 import * as fromLayout from '../../store/layout/layout.reducer';
+import * as layout from '../../store/layout/layout.actions';
 
 @Component({
   selector: 'rareink-ui-title-bar',
@@ -16,19 +17,12 @@ export class TitleBarComponent implements OnInit, OnDestroy {
 
   // TODO: Make this dynamic, probably?
   public title = 'RareInk';
+  @Input() public maximized: boolean;
   public subscription$: Subscription;
 
   @HostBinding('class.hidden') public hidden: boolean;
 
-  constructor(
-    private electron: NgxElectronService,
-    private store: Store<fromRoot.State>
-  ) {
-    this.subscription$ = this.store.subscribe(subscribedStore => {
-      // we don't want to show the titlebar on a non-Electron environment, so we flip the boolean.
-      this.hidden = !subscribedStore.layout.isElectron;
-    });
-  }
+  constructor(private electron: NgxElectronService) { }
 
   onHamburgerMenuClick() {
     if (this.electron.isElectron) {

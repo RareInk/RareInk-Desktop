@@ -3,6 +3,7 @@ import {
   SET_ELECTRON_MODE,
   SET_WEB_MODE,
   SET_PLATFORM,
+  SET_WINDOW_MAXIMIZED_STATE,
   Actions
 } from './layout.actions';
 
@@ -11,11 +12,13 @@ import {
 export interface State {
   isElectron: boolean;
   platform: string;
+  isMaximized: boolean;
 }
 
 const initialState: State = {
   isElectron: false,
-  platform: ''
+  platform: '',
+  isMaximized: false
 };
 
 // Reducer
@@ -38,6 +41,12 @@ export function reducer(state: State = initialState, action: Actions): State {
       return {
         ...state,
         platform: action.payload
+      };
+    }
+    case SET_WINDOW_MAXIMIZED_STATE: {
+      return {
+        ...state,
+        isMaximized: action.payload
       };
     }
     default: {

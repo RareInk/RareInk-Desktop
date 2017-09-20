@@ -17,6 +17,7 @@ import * as layout from './store/layout/layout.actions';
 export class AppComponent implements OnDestroy {
   public isElectron: boolean;
   public platform: string;
+  public maximized: boolean;
   public subscription$: Subscription;
 
   constructor(
@@ -27,9 +28,16 @@ export class AppComponent implements OnDestroy {
     if (this.electron.isElectron) {
       console.log('Running as an Electron app.');
       this.store.dispatch(new layout.SetElectronModeAction());
-      this.electron.ipcRenderer.on('ELECTRON_BRIDGE_CLIENT', (event: Electron.Event, msg: any) => {
-        if (msg === 'rareink:menu:open-about') {
+      this.electron.send('rareink:window:requestmaximizedstate');
+      this.electron.listener$.subscribe(message => {
+        if (message === 'rareink:menu:open-about') {
           this.router.navigate(['/about']);
+        }
+        if (message === 'rareink:window:ismaximized') {
+          this.store.dispatch(new layout.SetWindowMaximizedStateAction(true));
+        }
+        if (message === 'rareink:window:isunmaximized') {
+          this.store.dispatch(new layout.SetWindowMaximizedStateAction(false));
         }
       });
     } else {
@@ -44,6 +52,7 @@ export class AppComponent implements OnDestroy {
     this.subscription$ = this.store.subscribe(subscribedStore => {
       this.isElectron = subscribedStore.layout.isElectron;
       this.platform = subscribedStore.layout.platform;
+      this.maximized = subscribedStore.layout.isMaximized;
     });
   }
 
