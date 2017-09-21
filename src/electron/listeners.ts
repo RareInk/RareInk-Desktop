@@ -13,7 +13,13 @@ function initMainListener(window: Electron.BrowserWindow) {
       event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:generic:pong');
     }
     if (msg === 'rareink:window:requestmaximizedstate') {
-      setWindowMaximizedState(window);
+      // Initial request of the window maximized state. Called during
+      // AppComponent initialization.
+      if (window.isMaximized()) {
+        event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:ismaximized');
+      } else {
+        event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:isunmaximized');
+      }
     }
     if (msg === 'rareink:window:minimize') {
       window.minimize();
@@ -21,23 +27,21 @@ function initMainListener(window: Electron.BrowserWindow) {
     if (msg === 'rareink:window:maximize') {
       if (window.isMaximized()) {
         window.unmaximize();
+        event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:isunmaximized');
       } else {
         window.maximize();
+        event.sender.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:ismaximized');
       }
-      setWindowMaximizedState(window);
     }
     if (msg === 'rareink:window:close') {
       window.close();
     }
+    if (msg === 'rareink:window:togglemenu') {
+      // Toggle the application menu.
+      const menu = Menu.getApplicationMenu();
+      menu.popup(window, {});
+    }
   });
-}
-
-function setWindowMaximizedState(window: Electron.BrowserWindow) {
-  if (window.isMaximized()) {
-    window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:ismaximized');
-  } else {
-    window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:window:isunmaximized');
-  }
 }
 
 export default initMainListener;

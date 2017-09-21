@@ -19,14 +19,9 @@
       <line stroke="#ffffff" stroke-width="1" x1="0" y1="0" x2="10.2" y2="0" />
     </svg>
   </a>
-  <a *ngIf="maximized" title="Maximize" class="window-controls__button maximize" (click)="onMaximizeClick()">
+  <a title="Maximize/Restore" class="window-controls__button maximize" (click)="onMaximizeClick()">
     <svg x="0px" y="0px" viewBox="0 0 10.2 10.1" style="width: 10px; height: 10px;">
       <path fill="#ffffff" d="M0,0v10.1h10.2V0H0z M9.2,9.2H1.1V1h8.1V9.2z"></path>
-    </svg>
-  </a>
-  <a *ngIf="!maximized" title="Restore Down" class="window-controls__button restore" (click)="onMaximizeClick()">
-    <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" data-radium="true" style="width: 10px; height: 10px;">
-      <path fill="#ffffff" d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z"></path>
     </svg>
   </a>
   <a title="Close" class="window-controls__button close" (click)="onCloseClick()">

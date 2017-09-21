@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -13,22 +13,19 @@ import * as layout from '../../store/layout/layout.actions';
   templateUrl: './title-bar.component.html',
   styleUrls: ['./title-bar.component.scss']
 })
-export class TitleBarComponent implements OnInit, OnDestroy {
+export class TitleBarComponent implements OnInit {
 
   // TODO: Make this dynamic, probably?
   public title = 'RareInk';
   @Input() public maximized: boolean;
-  public subscription$: Subscription;
 
   @HostBinding('class.hidden') public hidden: boolean;
 
-  constructor(private electron: NgxElectronService) { }
+  constructor(private electron: NgxElectronService) {}
 
   onHamburgerMenuClick() {
     if (this.electron.isElectron) {
-      const { remote } = this.electron;
-      const menu = remote.Menu.getApplicationMenu();
-      menu.popup(remote.getCurrentWindow(), {});
+      this.electron.send('rareink:window:togglemenu');
     }
   }
 
@@ -44,6 +41,12 @@ export class TitleBarComponent implements OnInit, OnDestroy {
     }
   }
 
+  onUnmaximizeClick() {
+    if (this.electron.isElectron) {
+      this.electron.send('rareink:window:unmaximize');
+    }
+  }
+
   onMinimizeClick() {
     if (this.electron.isElectron) {
       this.electron.send('rareink:window:minimize');
@@ -51,11 +54,5 @@ export class TitleBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-  }
-
-
-  ngOnDestroy() {
-    // Unsubscribe our subscription to prevent memory leaks.
-    this.subscription$.unsubscribe();
   }
 }

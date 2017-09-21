@@ -34,10 +34,10 @@ export class AppComponent implements OnDestroy {
           this.router.navigate(['/about']);
         }
         if (message === 'rareink:window:ismaximized') {
-          this.store.dispatch(new layout.SetWindowMaximizedStateAction(true));
+          this.maximized = false;
         }
         if (message === 'rareink:window:isunmaximized') {
-          this.store.dispatch(new layout.SetWindowMaximizedStateAction(false));
+          this.maximized = true;
         }
       });
     } else {
@@ -52,7 +52,6 @@ export class AppComponent implements OnDestroy {
     this.subscription$ = this.store.subscribe(subscribedStore => {
       this.isElectron = subscribedStore.layout.isElectron;
       this.platform = subscribedStore.layout.platform;
-      this.maximized = subscribedStore.layout.isMaximized;
     });
   }
 
