@@ -7,6 +7,7 @@ import configureStore from './configureStore';
 import routes from './routes';
 
 import 'normalize.css/normalize.css';
+import 'common/styles/globals.scss';
 
 const history = createBrowserHistory();
 const store = configureStore();
