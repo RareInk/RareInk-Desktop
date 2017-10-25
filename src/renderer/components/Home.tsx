@@ -8,6 +8,6 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
         <h1>Hello, world!</h1>
         <p>Welcome to your new single-page application.</p>
       </div>
-    )
+    );
   }
 }

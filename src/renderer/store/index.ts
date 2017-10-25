@@ -1,9 +1,9 @@
-import { LayoutState } from './layout/types'
-import layout from './layout/reducer'
+import { LayoutState } from './layout/types';
+import layout from './layout/reducer';
 
 // The top-level state object
 export interface ApplicationState {
-  layout: LayoutState,
+  layout: LayoutState;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property

@@ -1,10 +1,10 @@
-import { Action } from 'redux'
+import { Action } from 'redux';
 
 export interface LayoutState {
-  isMaximized: boolean
+  isMaximized: boolean;
 }
 
 export interface SetWindowMaximizedStateAction extends Action {
-  type: 'SET_WINDOW_MAXIMIZED_STATE'
-  maximizedState: boolean
+  type: 'SET_WINDOW_MAXIMIZED_STATE';
+  maximizedState: boolean;
 }
