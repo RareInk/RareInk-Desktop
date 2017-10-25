@@ -26,7 +26,7 @@ Install dependencies with [yarn](https://yarnpkg.com/en/):
 yarn
 ```
 
-> **Why Yarn?** Yarn has a stronger lockfile model and fixes most of the issues pre-npm@5. It still supports npm repositories and works well with npm.
+> **Why Yarn?** Yarn has a stronger lockfile model and fixes most of the issues pre-npm@5. It still supports npm repositories and works well with all the npm goodness that you commonly use.
 
 Thanks to the power of `electron-webpack` this project comes packed with...
 
