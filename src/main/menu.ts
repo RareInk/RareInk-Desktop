@@ -1,5 +1,5 @@
 import { app, Menu } from 'electron';
-import { isWindows } from './utils';
+import { isWindows } from 'common/utils';
 
 /**
  * Build the main menu of our app.
@@ -7,11 +7,11 @@ import { isWindows } from './utils';
 const createMenu = (window: Electron.BrowserWindow) =>
   Menu.buildFromTemplate([
     {
-      label: isWindows ? 'File' : app.getName(),
+      label: isWindows() ? 'File' : app.getName(),
       submenu: [
         {
-          label: isWindows ? 'Exit' : `Quit ${app.getName()}`,
-          accelerator: isWindows ? 'Alt+F4' : 'CmdOrCtrl+Q',
+          label: isWindows() ? 'Exit' : `Quit ${app.getName()}`,
+          accelerator: isWindows() ? 'Alt+F4' : 'CmdOrCtrl+Q',
           click: () => {
             app.quit();
           }
