@@ -1,7 +1,6 @@
+import { ipcRenderer, shell } from 'electron';
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
-import { ApplicationState } from '../store';
 
 const styles = StyleSheet.create({
   root: {
@@ -23,6 +22,8 @@ class AppContainer extends React.Component<{}, CounterState> {
     this.state = {
       isMaximized: false
     };
+
+    this.initElectronListeners();
   }
   public render() {
     return (
@@ -30,6 +31,12 @@ class AppContainer extends React.Component<{}, CounterState> {
         {this.props.children}
       </div>
     );
+  }
+
+  public initElectronListeners() {
+    ipcRenderer.on('rareink:generic:pong', () => {
+      shell.beep();
+    });
   }
 }
 
