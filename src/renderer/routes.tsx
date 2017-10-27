@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import AppContainer from './containers/App';
+import App from './containers/App';
 import Home from './containers/Home';
 
 const routes = (
-  <AppContainer>
+  <App>
     <Route exact path="/" component={Home} />
     <Route path="/projects" />
-  </AppContainer>
+  </App>
 );
 
 export default routes;
