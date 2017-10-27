@@ -1,4 +1,4 @@
-import { ipcRenderer, shell } from 'electron';
+import { ipcRenderer, shell, remote } from 'electron';
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
@@ -37,7 +37,13 @@ class App extends React.Component<{}, CounterState> {
 
   public initElectronListeners() {
     ipcRenderer.on('rareink:generic:pong', () => {
+      console.log('pong');
       shell.beep();
+    });
+
+    ipcRenderer.on('rareink:menu:open-about', () => {
+      console.log('open-about');
+      remote.getCurrentWindow().loadURL('/about');
     });
   }
 }

@@ -84,7 +84,7 @@ const createMenu = (window: Electron.BrowserWindow) =>
         {
           label: 'About RareInk',
           click: () => {
-            window.webContents.send('ELECTRON_BRIDGE_CLIENT', 'rareink:menu:open-about');
+            window.webContents.send('rareink:menu:open-about');
           }
         }
       ]
