@@ -6,6 +6,7 @@ import Home from './components/Home';
 const routes = (
   <AppContainer>
     <Route exact path="/" component={Home} />
+    <Route path="/projects" />
   </AppContainer>
 );
 
