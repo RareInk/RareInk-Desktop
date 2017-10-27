@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { RouteProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import { ApplicationState } from '../store';
-import { LayoutState } from '../store/layout/types';
 
 const styles = StyleSheet.create({
   root: {
@@ -15,9 +13,17 @@ const styles = StyleSheet.create({
   }
 });
 
-type CounterProps = LayoutState & RouteProps;
+interface CounterState {
+  isMaximized: boolean;
+}
 
-class AppContainer extends React.Component<CounterProps> {
+class AppContainer extends React.Component<{}, CounterState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      isMaximized: false
+    };
+  }
   public render() {
     return (
       <div className={css(styles.root)}>
@@ -27,8 +33,4 @@ class AppContainer extends React.Component<CounterProps> {
   }
 }
 
-const mapStateToProps = (state: ApplicationState) => ({
-  isMaximized: state.layout.isMaximized
-});
-
-export default connect(mapStateToProps)(AppContainer);
+export default AppContainer;
