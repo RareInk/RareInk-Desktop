@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 import AppContainer from './containers/App';
-import Home from './components/Home';
+import Home from './containers/Home';
 
 const routes = (
   <AppContainer>
