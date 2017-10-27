@@ -85,7 +85,7 @@
   version "16.0.18"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.18.tgz#c08eea79ada55bf10b5353e18c21797dd17afa23"
 
-"@types/webpack-env@^1.13.1":
+"@types/webpack-env@^1.13.2":
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.2.tgz#c290b99dbef74df21b06671aea36e355bf3b27e1"
 
@@ -565,6 +565,10 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-component@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-component/-/babel-plugin-component-0.10.1.tgz#cfac25045e5c6e1353e89f05ff5a675af9712759"
+
 babel-plugin-minify-builtins@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-builtins/-/babel-plugin-minify-builtins-0.2.0.tgz#317f824b0907210b6348671bb040ca072e2e0c82"
@@ -934,7 +938,7 @@ babel-plugin-transform-undefined-to-void@^6.8.3:
   version "6.8.3"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.8.3.tgz#fc52707f6ee1ddc71bb91b0d314fbefdeef9beb4"
 
-babel-preset-env@^1.6.0:
+babel-preset-env@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.1.tgz#a18b564cc9b9afdf4aae57ae3c1b0d99188e6f48"
   dependencies:
@@ -1771,7 +1775,7 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
-css-hot-loader@^1.3.1:
+css-hot-loader@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/css-hot-loader/-/css-hot-loader-1.3.2.tgz#c4fb0fb49a5aedba03383db1e32e776cd5ea6998"
   dependencies:
@@ -2147,7 +2151,7 @@ electron-builder@^19.34.1:
     update-notifier "^2.3.0"
     yargs "^10.0.3"
 
-electron-devtools-installer@^2.2.0, electron-devtools-installer@^2.2.1:
+electron-devtools-installer@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/electron-devtools-installer/-/electron-devtools-installer-2.2.1.tgz#0beb73ccbf65cbc4d09e706cebda638f839b8c55"
   dependencies:
@@ -2210,14 +2214,15 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.24:
   version "1.3.27"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
-electron-webpack-js@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/electron-webpack-js/-/electron-webpack-js-1.0.4.tgz#95a976cc3d4508f1745ca081e41ce3fc81cc3c5f"
+electron-webpack-js@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/electron-webpack-js/-/electron-webpack-js-1.1.0.tgz#c7c1cf375f6d32638ba62f46e1bd31445b7f1018"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
+    babel-plugin-component "^0.10.1"
     babel-plugin-syntax-dynamic-import "^6.18.0"
-    babel-preset-env "^1.6.0"
+    babel-preset-env "^1.6.1"
 
 electron-webpack-ts@^1.1.3:
   version "1.1.3"
@@ -2226,37 +2231,37 @@ electron-webpack-ts@^1.1.3:
     fork-ts-checker-webpack-plugin "^0.2.8"
     ts-loader "^2.3.7"
 
-electron-webpack@1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/electron-webpack/-/electron-webpack-1.8.0.tgz#7b06d55cc91238c4c7fd1b81a20e78cbc6ac9ef4"
+electron-webpack@1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/electron-webpack/-/electron-webpack-1.11.0.tgz#51cbdc1a6ba1e73af8504fba135996eb1f28ca52"
   dependencies:
-    "@types/webpack-env" "^1.13.1"
+    "@types/webpack-env" "^1.13.2"
     async-exit-hook "^2.0.1"
     babel-minify-webpack-plugin "^0.2.0"
-    bluebird-lst "^1.0.3"
-    chalk "^2.1.0"
+    bluebird-lst "^1.0.5"
+    chalk "^2.3.0"
     crocket "^0.9.11"
-    css-hot-loader "^1.3.1"
+    css-hot-loader "^1.3.2"
     css-loader "^0.28.7"
     debug "^3.1.0"
-    electron-devtools-installer "^2.2.0"
-    electron-webpack-js "^1.0.4"
-    extract-text-webpack-plugin "^3.0.1"
+    electron-devtools-installer "^2.2.1"
+    electron-webpack-js "~1.1.0"
+    extract-text-webpack-plugin "^3.0.2"
     file-loader "^1.1.5"
-    fs-extra-p "^4.4.2"
-    get-port "^3.2.0"
+    fs-extra-p "^4.4.4"
     html-loader "^0.5.1"
     html-webpack-plugin "^2.30.1"
     lazy-val "^1.0.2"
     node-loader "^0.6.0"
-    read-config-file "^1.1.1"
+    read-config-file "^1.2.0"
     semver "^5.4.1"
     source-map-support "^0.5.0"
     style-loader "^0.19.0"
     url-loader "^0.6.2"
     virtual-module-webpack-plugin "^0.3.0"
-    webpack-dev-server "^2.9.1"
-    yargs "^9.0.1"
+    webpack-dev-server "^2.9.3"
+    webpack-merge "^4.1.0"
+    yargs "^10.0.3"
 
 electron@1.7.8:
   version "1.7.8"
@@ -2567,9 +2572,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.1.tgz#605a8893faca1dd49bb0d2ca87493f33fd43d102"
+extract-text-webpack-plugin@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
   dependencies:
     async "^2.4.1"
     loader-utils "^1.1.0"
@@ -2759,7 +2764,7 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
 
-fs-extra-p@^4.4.0, fs-extra-p@^4.4.2, fs-extra-p@^4.4.4:
+fs-extra-p@^4.4.0, fs-extra-p@^4.4.4:
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/fs-extra-p/-/fs-extra-p-4.4.4.tgz#396ad6f914eb2954e1700fd0e18288301ed45f04"
   dependencies:
@@ -2838,10 +2843,6 @@ gaze@^1.0.0:
 get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
-
-get-port@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/get-port/-/get-port-3.2.0.tgz#dd7ce7de187c06c8bf353796ac71e099f0980ebc"
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -5033,7 +5034,7 @@ react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-read-config-file@1.2.0, read-config-file@^1.1.1:
+read-config-file@1.2.0, read-config-file@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/read-config-file/-/read-config-file-1.2.0.tgz#1fd7dc8ccdad838cac9f686182625290fc94f456"
   dependencies:
@@ -6309,7 +6310,7 @@ webpack-dev-middleware@^1.11.0:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-dev-server@^2.9.1:
+webpack-dev-server@^2.9.3:
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.3.tgz#f0554e88d129e87796a6f74a016b991743ca6f81"
   dependencies:
@@ -6339,6 +6340,12 @@ webpack-dev-server@^2.9.1:
     supports-color "^4.2.1"
     webpack-dev-middleware "^1.11.0"
     yargs "^6.6.0"
+
+webpack-merge@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.0.tgz#6ad72223b3e0b837e531e4597c199f909361511e"
+  dependencies:
+    lodash "^4.17.4"
 
 webpack-sources@^1.0.1:
   version "1.0.1"
@@ -6568,24 +6575,6 @@ yargs@^7.0.0:
 yargs@^8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
-  dependencies:
-    camelcase "^4.1.0"
-    cliui "^3.2.0"
-    decamelize "^1.1.1"
-    get-caller-file "^1.0.1"
-    os-locale "^2.0.0"
-    read-pkg-up "^2.0.0"
-    require-directory "^2.1.1"
-    require-main-filename "^1.0.1"
-    set-blocking "^2.0.0"
-    string-width "^2.0.0"
-    which-module "^2.0.0"
-    y18n "^3.2.1"
-    yargs-parser "^7.0.0"
-
-yargs@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-9.0.1.tgz#52acc23feecac34042078ee78c0c007f5085db4c"
   dependencies:
     camelcase "^4.1.0"
     cliui "^3.2.0"
