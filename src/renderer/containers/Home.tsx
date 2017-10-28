@@ -18,7 +18,6 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
   }
 
   public handleClick() {
-    console.log('test');
     ipcRenderer.send('rareink:generic:ping');
   }
 }

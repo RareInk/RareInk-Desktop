@@ -37,7 +37,6 @@ class App extends React.Component<{}, CounterState> {
 
   public initElectronListeners() {
     ipcRenderer.on('rareink:generic:pong', () => {
-      console.log('pong');
       shell.beep();
     });
 
