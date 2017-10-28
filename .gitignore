@@ -1,5 +1,6 @@
 # Compiled package files
 dist/
+packages/
 
 # npm lockfile
 # Since we use Yarn, this can be ignored.

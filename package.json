@@ -31,6 +31,20 @@
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
+  "build": {
+    "appId": "com.RareInk.RareInkDesktop",
+    "directories": {
+      "output": "./packages"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64"]
+        }
+      ]
+    }
+  },
   "dependencies": {
     "aphrodite": "^1.2.5",
     "history": "^4.7.2",
@@ -57,7 +71,7 @@
     "babel-preset-react": "^6.24.1",
     "cross-env": "^5.1.0",
     "electron": "1.7.8",
-    "electron-builder": "^19.34.1",
+    "electron-builder": "^19.42.2",
     "electron-devtools-installer": "^2.2.1",
     "electron-webpack": "1.11.0",
     "electron-webpack-ts": "^1.1.3",
