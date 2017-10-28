@@ -66,6 +66,6 @@
 
   // Global elements
   --body-color: var(--color-black);
-  --background-color: #f8f8f8; // should reassign to the shades of grey
+  --background-color: var(--color-gray-100);
   --link-color: var(--brand-color-wine-red);
 }
