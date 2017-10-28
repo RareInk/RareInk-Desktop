@@ -9,7 +9,7 @@ import {
 import thunk from 'redux-thunk';
 import { History } from 'history';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { ApplicationState, reducers } from './store';
+import * as StoreModule from './store';
 
 export default function configureStore(history: History) {
   // Build middleware. These are functions that can process the actions before they reach the store.
@@ -25,11 +25,23 @@ export default function configureStore(history: History) {
   )(createStore);
 
   // Combine all reducers and instantiate the app-wide store instance
-  const allReducers = combineReducers({
-    ...reducers,
-    router: routerReducer
-  });
-  const store = createStoreWithMiddleware(allReducers) as Store<ApplicationState>;
+  const allReducers = buildRootReducer(StoreModule.reducers);
+  const store = createStoreWithMiddleware(allReducers) as Store<StoreModule.ApplicationState>;
+
+  // Enable Webpack hot module replacement for reducers
+  if (module.hot) {
+    module.hot.accept('./store', () => {
+      const nextRootReducer = require<typeof StoreModule>('./store');
+      store.replaceReducer(buildRootReducer(nextRootReducer.reducers));
+    });
+  }
 
   return store;
+}
+
+function buildRootReducer(allReducers: any) {
+  return combineReducers<StoreModule.ApplicationState>({
+    ...allReducers,
+    routing: routerReducer
+  });
 }
