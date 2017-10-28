@@ -65,7 +65,7 @@
   --grid-breakpoint-xl: 1200px;
 
   // Global elements
-  --body-color: --color-black;
+  --body-color: var(--color-black);
   --background-color: #f8f8f8; // should reassign to the shades of grey
-  --link-color: --brand-color-wine-red;
+  --link-color: var(--brand-color-wine-red);
 }
