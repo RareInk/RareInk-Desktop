@@ -2,15 +2,15 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import configureStore from './configureStore';
 import routes from './routes';
 
 import 'normalize.css/normalize.css';
 import './styles/globals.scss';
 
-const history = createBrowserHistory();
-const store = configureStore();
+const history = createHashHistory();
+const store = configureStore(history);
 
 const renderApp = () => {
   ReactDOM.render(
