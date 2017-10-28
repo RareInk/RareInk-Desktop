@@ -1,6 +1,3 @@
-// HACK: This is a weird workaround because `electron-webpack` recognises an
-// `index.ts` entry point, but *not* `index.tsx`. So we simply have index.ts
-// point to our *actual* entry point, which is `boot.tsx`.
 import { webFrame } from 'electron';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

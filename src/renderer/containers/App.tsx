@@ -41,8 +41,12 @@ class App extends React.Component<{}, CounterState> {
     });
 
     ipcRenderer.on('rareink:menu:open-about', () => {
-      console.log('open-about');
-      remote.getCurrentWindow().loadURL('/about');
+      // TODO: Move this to main process.
+      remote.dialog.showMessageBox({
+        title: 'About RareInk',
+        message: 'RareInk',
+        detail: 'You\'re running a development copy of RareInk. Stuff might not exist yet.'
+      });
     });
   }
 }
