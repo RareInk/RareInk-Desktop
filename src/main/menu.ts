@@ -1,4 +1,4 @@
-import { app, Menu } from 'electron';
+import { app, Menu, dialog } from 'electron';
 import { isWindows } from 'common/utils';
 
 /**
@@ -84,7 +84,11 @@ const createMenu = (window: Electron.BrowserWindow) =>
         {
           label: 'About RareInk',
           click: () => {
-            window.webContents.send('rareink:menu:open-about');
+            dialog.showMessageBox({
+              title: 'About RareInk',
+              message: 'RareInk',
+              detail: 'You\'re running a development copy of RareInk. Stuff might not exist yet.'
+            });
           }
         }
       ]

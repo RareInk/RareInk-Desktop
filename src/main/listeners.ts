@@ -40,6 +40,8 @@ function initMainListener(window: Electron.BrowserWindow) {
 
   ipcMain.on('rareink:window:togglemenu', () => {
     // Toggle the application menu.
+    // TODO: Currently unused. This should be moved to the custom titlebar's renderer process when
+    // we finally have one.
     const menu = Menu.getApplicationMenu();
     menu.popup(window, {});
   });

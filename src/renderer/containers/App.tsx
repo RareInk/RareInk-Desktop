@@ -1,4 +1,4 @@
-import { ipcRenderer, shell, remote } from 'electron';
+import { ipcRenderer, shell } from 'electron';
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
@@ -13,11 +13,11 @@ const styles = StyleSheet.create({
   }
 });
 
-interface CounterState {
+interface AppState {
   isMaximized: boolean;
 }
 
-class App extends React.Component<{}, CounterState> {
+class App extends React.Component<{}, AppState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -38,15 +38,6 @@ class App extends React.Component<{}, CounterState> {
   public initElectronListeners() {
     ipcRenderer.on('rareink:generic:pong', () => {
       shell.beep();
-    });
-
-    ipcRenderer.on('rareink:menu:open-about', () => {
-      // TODO: Move this to main process.
-      remote.dialog.showMessageBox({
-        title: 'About RareInk',
-        message: 'RareInk',
-        detail: 'You\'re running a development copy of RareInk. Stuff might not exist yet.'
-      });
     });
   }
 }
