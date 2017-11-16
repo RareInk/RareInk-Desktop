@@ -14,7 +14,7 @@ class Sidebar extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <div className={css(styles.sidebar)}>
-        <SidebarHeader />
+        <SidebarHeader projectName="Project Name" />
         <div>
           ProjectsSidebar
         </div>

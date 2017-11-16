@@ -9,11 +9,19 @@ const styles = StyleSheet.create({
   }
 });
 
-class SidebarHeader extends React.Component<{}, {}> {
+interface SidebarHeaderProps {
+  projectName: string;
+}
+
+class SidebarHeader extends React.Component<SidebarHeaderProps, {}> {
+  constructor (props: SidebarHeaderProps) {
+    super(props);
+  }
+
   public render() {
     return (
       <div className={css(styles.sidebarHeader)}>
-        SidebarHeader
+        {this.props.projectName}
       </div>
     );
   }
