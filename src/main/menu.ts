@@ -1,5 +1,5 @@
 import { app, Menu, dialog } from 'electron';
-import { isWindows } from 'common/utils';
+import isWindows from '../common/utils/isWindows';
 
 /**
  * Build the main menu of our app.
