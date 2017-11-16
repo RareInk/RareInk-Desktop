@@ -5,6 +5,8 @@ export interface LayoutState {
 }
 
 export interface SetWindowMaximizedStateAction extends Action {
-  type: 'SET_WINDOW_MAXIMIZED_STATE';
-  maximizedState: boolean;
+  payload: boolean;
+  type: '@@layout/SET_WINDOW_MAXIMIZED_STATE';
 }
+
+export type KnownAction = SetWindowMaximizedStateAction;
