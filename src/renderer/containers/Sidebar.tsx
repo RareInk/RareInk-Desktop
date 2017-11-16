@@ -1,19 +1,23 @@
 import * as React from 'react';
 import SidebarHeader from '../components/SidebarHeader/SidebarHeader';
-import { StyleSheet, css } from 'aphrodite';
+import { style } from 'typestyle';
 
-const styles = StyleSheet.create({
-  sidebar: {
-    display: 'flex',
-    flexDirection: 'column',
-    borderRight: '1px solid var(--color-gray-400)'
+const rootClass = style({
+  display: 'flex',
+  flexDirection: 'column',
+  borderRight: '1px solid var(--color-gray-400)',
+
+  $nest: {
+    [`& .childClass`]: {
+      color: 'red'
+    }
   }
 });
 
 class Sidebar extends React.PureComponent<{}, {}> {
   public render() {
     return (
-      <div className={css(styles.sidebar)}>
+      <div className={rootClass}>
         <SidebarHeader projectName="Project Name" />
         <div>
           ProjectsSidebar

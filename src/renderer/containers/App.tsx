@@ -1,16 +1,14 @@
 import { ipcRenderer, shell } from 'electron';
 import * as React from 'react';
-import { StyleSheet, css } from 'aphrodite/no-important';
+import { style } from 'typestyle';
 
 import ProjectsSidebar from './Sidebar';
 
-const styles = StyleSheet.create({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: '240px auto',
-    height: '100%',
-    marginTop: 0
-  }
+const rootClass = style({
+  display: 'grid',
+  gridTemplateColumns: '240px auto',
+  height: '100%',
+  marginTop: 0
 });
 
 interface AppState {
@@ -28,7 +26,7 @@ class App extends React.Component<{}, AppState> {
   }
   public render() {
     return (
-      <div className={css(styles.root)}>
+      <div className={rootClass}>
         <ProjectsSidebar />
         {this.props.children}
       </div>
