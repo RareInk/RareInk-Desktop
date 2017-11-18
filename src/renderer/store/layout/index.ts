@@ -1,3 +1,3 @@
-export * from './layout.actions'
-export * from './layout.reducer'
-export * from './layout.types'
+export * from './layoutActions';
+export * from './layoutReducer';
+export * from './types';

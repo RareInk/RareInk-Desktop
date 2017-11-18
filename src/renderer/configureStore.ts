@@ -3,7 +3,8 @@ import {
   compose,
   applyMiddleware,
   combineReducers,
-  GenericStoreEnhancer
+  GenericStoreEnhancer,
+  Reducer
 } from 'redux';
 import thunk from 'redux-thunk';
 import { History } from 'history';
@@ -21,7 +22,7 @@ export default function configureStore(history: History) {
   ) as GenericStoreEnhancer;
 
   // Combine all reducers and instantiate the app-wide store instance
-  const allReducers = buildRootReducer(reducers);
+  const allReducers = buildRootReducer<ApplicationState>(reducers);
   const store = createStore<ApplicationState>(allReducers, enhancer);
 
   // Enable Webpack hot module replacement for reducers
@@ -35,8 +36,8 @@ export default function configureStore(history: History) {
   return store;
 }
 
-function buildRootReducer(allReducers: any) {
-  return combineReducers<ApplicationState>({
+function buildRootReducer<TState>(allReducers: {[key: string]: Reducer<any>}) {
+  return combineReducers<TState>({
     ...allReducers,
     routing: routerReducer
   });

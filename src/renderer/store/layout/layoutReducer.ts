@@ -1,5 +1,5 @@
 import { Reducer, AnyAction } from 'redux';
-import { LayoutState } from './layout.types';
+import { LayoutState } from './types';
 
 const initialState: LayoutState = {
   isMaximized: false
