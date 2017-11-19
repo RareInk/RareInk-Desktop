@@ -27,6 +27,9 @@ export class AsyncDatastore extends Nedb {
     super(pathOrOptions);
   }
 
+  /**
+   * Load the database from the datafile, and trigger the execution of buffered commands if any
+   */
   public loadDatabaseAsync(): Promise<void> {
     return new Promise((resolve, reject) => super.loadDatabase((err) => {
       if (err) {
@@ -37,7 +40,14 @@ export class AsyncDatastore extends Nedb {
     }));
   }
 
-  public ensureIndexAsync(options: Object): Promise<void> {
+  /**
+   * Ensure an index is kept for this field. Same parameters as lib/indexes For now this function
+   * is synchronous, we need to test how much time it takes We use an async API for consistency
+   * with the rest of the code
+   *
+   * @param options Nedb.EnsureIndexOptions
+   */
+  public ensureIndexAsync(options: Nedb.EnsureIndexOptions): Promise<void> {
     return new Promise((resolve, reject) => super.ensureIndex(<any>options, (err) => {
       if (err) {
         reject(err);
@@ -47,6 +57,11 @@ export class AsyncDatastore extends Nedb {
     }));
   }
 
+  /**
+   * Remove an index
+   *
+   * @param fieldName
+   */
   public removeIndexAsync(fieldName: string): Promise<void> {
     return new Promise((resolve, reject) => super.removeIndex(fieldName, (err) => {
       if (err) {
@@ -57,6 +72,11 @@ export class AsyncDatastore extends Nedb {
     }));
   }
 
+  /**
+   * Insert a new document
+   *
+   * @param newDoc
+   */
   public insertAsync<T>(newDoc: T): Promise<T> {
     return new Promise((resolve, reject) => super.insert<T>(newDoc, (err, document) => {
       if (err) {
@@ -67,6 +87,11 @@ export class AsyncDatastore extends Nedb {
     }));
   }
 
+  /**
+   * Count all documents matching the query
+   *
+   * @param query A MongoDB-style query
+   */
   public countAsync(query: any): Promise<number> {
     return new Promise((resolve, reject) => super.count(query, (err, n) => {
       if (err) {
@@ -77,7 +102,20 @@ export class AsyncDatastore extends Nedb {
     }));
   }
 
+  /**
+   * Find all documents matching the query If no callback is passed, we return the cursor so that
+   * user can limit, skip and finally exec
+   *
+   * @param query A MongoDB-style query
+   */
   public findAsync<T>(query: any): Promise<T[]>;
+  /**
+   * Find all documents matching the query If no callback is passed, we return the cursor so that
+   * user can limit, skip and finally exec
+   *
+   * @param query A MongoDB-style query
+   * @param projection A MongoDB-style projection
+   */
   public findAsync<T>(query: any, projection?: T): Promise<T[]> {
     if (projection) {
       return new Promise((resolve, reject) => super.find<T>(query, projection, (err, documents) => {
@@ -98,8 +136,18 @@ export class AsyncDatastore extends Nedb {
     }
   }
 
-
+  /**
+   * Find one document matching the query
+   *
+   * @param query A MongoDB-style query
+   */
   public findOneAsync<T>(query: any): Promise<T>;
+  /**
+   * Find one document matching the query
+   *
+   * @param query A MongoDB-style query
+   * @param projection A MongoDB-style projection
+   */
   public findOneAsync<T>(query: any, projection?: T): Promise<T> {
     if (projection) {
       return new Promise((resolve, reject) =>
@@ -122,6 +170,15 @@ export class AsyncDatastore extends Nedb {
     }
   }
 
+  /**
+   * Update all docs matching query v1.8 signature. For now, very naive implementation
+   * (recalculating the whole database)
+   *
+   * @api private Use Datastore.update which has the same signature
+   * @param query A MongoDB-style query
+   * @param updateQuery A MongoDB-style query
+   * @param options Optional options
+   */
   public updateAsync<T>(
     query: any,
     updateQuery: any,
@@ -140,6 +197,13 @@ export class AsyncDatastore extends Nedb {
       // tslint:enable:align
   }
 
+  /**
+   * Remove all docs matching the query For now very naive implementation (similar to update)
+   *
+   * @api — private Use Datastore.remove which has the same signature
+   * @param query A MongoDB-style query
+   * @param options Optional options
+   */
   public removeAsync(query: any, options?: Nedb.RemoveOptions): Promise<number> {
     if (options) {
       return new Promise((resolve, reject) => super.remove(query, options, (err, n) => {
