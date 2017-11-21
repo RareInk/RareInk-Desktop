@@ -2,15 +2,15 @@ import { remote } from 'electron';
 import * as path from 'path';
 import * as Nedb from 'nedb';
 
-export function getDBFilePath(modelType: string) {
-  const basePath = remote.app.getPath('userData');
-  return path.join(basePath, `rareink.${modelType}.db`);
-}
-
 interface NedbUpdateReturnMessage {
   numberOfUpdated: number;
   upsert: boolean;
   affectedDocuments?: any;
+}
+
+export function getDBFilePath(modelType: string) {
+  const basePath = remote.app.getPath('userData');
+  return path.join(basePath, `rareink.${modelType}.db`);
 }
 
 /**
@@ -200,7 +200,7 @@ export class AsyncDatastore extends Nedb {
   /**
    * Remove all docs matching the query For now very naive implementation (similar to update)
    *
-   * @api — private Use Datastore.remove which has the same signature
+   * @api private Use Datastore.remove which has the same signature
    * @param query A MongoDB-style query
    * @param options Optional options
    */
