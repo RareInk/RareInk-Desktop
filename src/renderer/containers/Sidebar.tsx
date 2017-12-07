@@ -17,12 +17,12 @@ const rootClass = style({
 class Sidebar extends React.PureComponent<{}, {}> {
   public render() {
     return (
-      <div className={rootClass}>
+      <aside className={rootClass}>
         <SidebarHeader projectName="Project Name" />
         <div>
           ProjectsSidebar
         </div>
-      </div>
+      </aside>
     );
   }
 }

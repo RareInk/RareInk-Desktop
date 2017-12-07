@@ -1,10 +1,20 @@
 import * as React from 'react';
 import { style } from 'typestyle';
 
+import SidebarMenu from './SidebarMenu';
+
 const rootClass = style({
-  padding: 'var(--spacer) var(--spacer-vertical)',
+  display: 'flex',
+  height: '42px',
   backgroundColor: 'var(--brand-color-wine-red)',
   color: 'var(--color-white)'
+});
+
+const projectNameClass = style({
+  display: 'flex',
+  flex: 'auto',
+  alignItems: 'center',
+  padding: '0 var(--spacer)'
 });
 
 interface SidebarHeaderProps {
@@ -19,7 +29,8 @@ class SidebarHeader extends React.Component<SidebarHeaderProps, {}> {
   public render() {
     return (
       <div className={rootClass}>
-        {this.props.projectName}
+        <div className={projectNameClass}>{this.props.projectName}</div>
+        <SidebarMenu />
       </div>
     );
   }
