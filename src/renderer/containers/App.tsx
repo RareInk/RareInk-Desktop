@@ -2,8 +2,6 @@ import { ipcRenderer, shell } from 'electron';
 import * as React from 'react';
 import { style } from 'typestyle';
 
-import ProjectsSidebar from './Sidebar';
-
 const rootClass = style({
   display: 'grid',
   gridTemplateColumns: '240px auto',
@@ -27,7 +25,6 @@ class App extends React.Component<{}, AppState> {
   public render() {
     return (
       <div className={rootClass}>
-        <ProjectsSidebar />
         {this.props.children}
       </div>
     );
