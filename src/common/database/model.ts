@@ -1,4 +1,5 @@
-import { AsyncDatastore, getDBFilePath } from './datastore';
+import { AsyncDatastore } from './datastore';
+import getDBFilePath from '../utils/getDbFilePath';
 
 export function initModel(model: string) {
   return new AsyncDatastore({

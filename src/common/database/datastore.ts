@@ -1,16 +1,9 @@
-import { remote } from 'electron';
-import * as path from 'path';
 import * as Nedb from 'nedb';
 
 interface NedbUpdateReturnMessage {
   numberOfUpdated: number;
   upsert: boolean;
   affectedDocuments?: any;
-}
-
-export function getDBFilePath(modelType: string) {
-  const basePath = remote.app.getPath('userData');
-  return path.join(basePath, `rareink.${modelType}.db`);
 }
 
 /**

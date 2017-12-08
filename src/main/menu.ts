@@ -1,5 +1,5 @@
-import { app, Menu, dialog } from 'electron';
-import isWindows from '../common/utils/isWindows';
+import { app, Menu, dialog, MenuItemConstructorOptions } from 'electron';
+import { isWindows, ismacOS } from '../common/utils/platform';
 
 /**
  * Build the main menu of our app.
@@ -9,6 +9,20 @@ const createMenu = (window: Electron.BrowserWindow) =>
     {
       label: isWindows() ? 'File' : app.getName(),
       submenu: [
+        ...(ismacOS()
+          ? [{ label: `About ${app.getName()}`, role: 'about' }, { type: 'separator' }]
+          : []
+        ) as MenuItemConstructorOptions[],
+        {
+          label: 'Preferences',
+          accelerator: 'CmdOrCtrl+,',
+          click: (menuItem, window, e) => {
+            if (!window || !window.webContents) {
+              return;
+            }
+            window.webContents.send('rareink:window:toggle-preferences');
+          }
+        },
         {
           label: isWindows() ? 'Exit' : `Quit ${app.getName()}`,
           accelerator: isWindows() ? 'Alt+F4' : 'CmdOrCtrl+Q',

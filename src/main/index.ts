@@ -1,8 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import setMainMenu from './menu';
 import initMainListener from './listeners';
-
-const isDevelopment = process.env.NODE_ENV !== 'production';
+import { isDevelopment } from '../common/utils/platform';
 
 // Set Electron globals here.
 global.platform = process.platform;
@@ -39,11 +38,11 @@ async function createMainWindow() {
   // Set url for `win`
     // points to `webpack-dev-server` in development
     // points to `index.html` in production
-  const url = isDevelopment
+  const url = isDevelopment()
     ? `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`
     : `file://${__dirname}/index.html`;
 
-  if (isDevelopment) {
+  if (isDevelopment()) {
     await installExtensions();
     window.webContents.openDevTools();
   }
