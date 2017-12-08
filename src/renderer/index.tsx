@@ -6,11 +6,13 @@ import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import { createHashHistory } from 'history';
 import configureStore from './configureStore';
-import * as RoutesModule from './routes';
-let routes = RoutesModule.routes;
 
 import 'normalize.css/normalize.css';
 import './styles/globals.scss';
+
+// Import the root element this way to support hot reloading
+import * as RootModule from './Root';
+let root = RootModule.root;
 
 // Disable zoom
 webFrame.setVisualZoomLevelLimits(1.0, 1.0);
@@ -22,7 +24,7 @@ const renderApp = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <ConnectedRouter history={history} children={routes} />
+        <ConnectedRouter history={history} children={root} />
       </Provider>
     </AppContainer>,
     document.getElementById('app')
@@ -33,8 +35,8 @@ renderApp();
 
 // Allow Hot Module Replacement
 if (module.hot) {
-  module.hot.accept('./routes', () => {
-    routes = require<typeof RoutesModule>('./routes').routes;
+  module.hot.accept('./Root', () => {
+    root = require<typeof RootModule>('./Root').root;
     renderApp();
   });
 }

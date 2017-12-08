@@ -23,6 +23,7 @@ export default class Projects extends React.Component<RouteComponentProps<{}>, {
   public render() {
     return (
       <Switch>
+        <Route path="/" component={() => <div>Projects</div>} />
         <Route path="/:id" />
         <Route component={ProjectNoMatch}/>
       </Switch>

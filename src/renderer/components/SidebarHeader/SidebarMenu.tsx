@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { style } from 'typestyle';
 import { Dropdown, DropdownTrigger, DropdownOptions, DropdownOption } from '../Dropdown';
+import { Link } from 'react-router-dom';
 
 const Icon = require('react-feather');
 
@@ -41,8 +42,8 @@ class SidebarMenu extends React.Component<SidebarMenuProps, {}> {
           <Icon.ChevronDown size={24} />
         </DropdownTrigger>
         <DropdownOptions popoutDirection="bottom" className={sidebarOptionsClass}>
-          <DropdownOption>Option1</DropdownOption>
-          <DropdownOption>Option2</DropdownOption>
+          <DropdownOption><Link to="/">Home</Link></DropdownOption>
+          <DropdownOption><Link to="/projects">Projects</Link></DropdownOption>
           <DropdownOption>Option3</DropdownOption>
           <div className={menuSpacerClass} />
           <DropdownOption>New Project...</DropdownOption>

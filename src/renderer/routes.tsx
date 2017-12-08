@@ -1,17 +1,24 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { RouteProps } from 'react-router';
 
-import ProjectsSidebar from './containers/Sidebar';
-import App from './containers/App';
 import Home from './containers/Home';
 import Projects from './containers/Projects';
 
-export const routes = (
-  <App>
-    <ProjectsSidebar />
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/projects" component={Projects} />
-    </Switch>
-  </App>
-);
+export interface RoutesDefinition extends RouteProps {
+  sidebar: any;
+  main: any;
+}
+
+export const routes: RoutesDefinition[] = [
+  {
+    path: '/',
+    exact: true,
+    sidebar: () => <div>HomeSidebar</div>,
+    main: Home
+  },
+  {
+    path: '/projects',
+    sidebar: () => <div>ProjectsSidebar</div>,
+    main: Projects
+  }
+];
