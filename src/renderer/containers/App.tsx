@@ -9,7 +9,7 @@ const rootClass = style({
   marginTop: 0
 });
 
-export default class App extends React.PureComponent<{}, {}> {
+export default class App extends React.Component<{}, {}> {
   public componentDidMount() {
     ipcRenderer.on('rareink:window:toggle-preferences', () => {
       console.log('rareink:window:toggle-preferences');
