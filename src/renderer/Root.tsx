@@ -3,14 +3,8 @@ import { Route } from 'react-router';
 import { style } from 'typestyle';
 import { routes } from './routes';
 
+import App from './containers/App';
 import { SidebarHeader } from './components/SidebarHeader';
-
-const rootClass = style({
-  display: 'grid',
-  gridTemplateColumns: '240px auto',
-  height: '100%',
-  marginTop: 0
-});
 
 const sidebarClass = style({
   display: 'flex',
@@ -25,7 +19,7 @@ const sidebarClass = style({
 });
 
 export const root = (
-  <div className={rootClass}>
+  <App>
     <aside className={sidebarClass}>
       <SidebarHeader projectName="Project Name" />
       {routes.map((route, index) => (
@@ -48,5 +42,5 @@ export const root = (
         />
       ))}
     </main>
-  </div>
+  </App>
 );
