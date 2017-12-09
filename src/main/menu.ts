@@ -90,7 +90,7 @@ const createMenu = (window: Electron.BrowserWindow) =>
       submenu: [
         ...(isDevelopment
           ? [{
-            label: 'Show/Hide Component Playground',
+            label: 'Component Playground',
             click: (menuItem, window, e) => {
               if (!window || !window.webContents) {
                 return;
