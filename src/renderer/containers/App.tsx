@@ -5,6 +5,7 @@ import { style } from 'typestyle';
 import { modalStyles } from '../utils/styles';
 
 import ComponentPlayground from '../playground/ComponentPlayground';
+import { ModalHeader, ModalContent } from '../components/Modal';
 
 const rootClass = style({
   display: 'grid',
@@ -45,8 +46,13 @@ export default class App extends React.Component<{}, AppState> {
           contentLabel="Component Playground"
           style={modalStyles}
         >
-          <ComponentPlayground />
-          <button onClick={() => this.togglePlaygroundModal()}>Close</button>
+          <ModalHeader
+            title="Component Playground"
+            onCloseButtonClick={() => this.togglePlaygroundModal()}
+          />
+          <ModalContent>
+            <ComponentPlayground />
+          </ModalContent>
         </Modal>
       </div>
     );
