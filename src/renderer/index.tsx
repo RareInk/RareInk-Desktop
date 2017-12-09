@@ -7,7 +7,6 @@ import { AppContainer } from 'react-hot-loader';
 import { createHashHistory } from 'history';
 import configureStore from './configureStore';
 
-import 'normalize.css/normalize.css';
 import './styles/globals.scss';
 
 // Import the root element this way to support hot reloading
