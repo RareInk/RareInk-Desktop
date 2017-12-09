@@ -1,5 +1,5 @@
 import { app, Menu, dialog, MenuItemConstructorOptions } from 'electron';
-import { isWindows, ismacOS } from '../common/utils/platform';
+import { isWindows, isDevelopment, ismacOS } from '../common/utils/platform';
 
 /**
  * Build the main menu of our app.
@@ -88,6 +88,18 @@ const createMenu = (window: Electron.BrowserWindow) =>
     {
       role: 'window',
       submenu: [
+        ...(isDevelopment
+          ? [{
+            label: 'Show/Hide Component Playground',
+            click: (menuItem, window, e) => {
+              if (!window || !window.webContents) {
+                return;
+              }
+              window.webContents.send('rareink:window:toggle-playground');
+            }
+          },
+          { type: 'separator' }]
+          : []) as MenuItemConstructorOptions[],
         { role: 'minimize' },
         { role: 'close' }
       ]

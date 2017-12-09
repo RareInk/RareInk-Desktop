@@ -1,6 +1,7 @@
 import { webFrame } from 'electron';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
@@ -18,6 +19,13 @@ webFrame.setVisualZoomLevelLimits(1.0, 1.0);
 
 const history = createHashHistory();
 const store = configureStore(history);
+
+// Create a new element that acts as the warp portal for our modals.
+const modalPortal = document.createElement('div');
+modalPortal.id = 'ReactModalPortal';
+
+// Set the element above as modal portal.
+Modal.setAppElement(modalPortal);
 
 const renderApp = () => {
   ReactDOM.render(
