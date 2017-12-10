@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 interface ButtonProps {
   id?: string;
@@ -26,4 +27,12 @@ class Button extends React.PureComponent<ButtonProps, {}> {
   }
 }
 
-export default Button;
+export default styled(Button)`
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  margin: 0;
+  background: transparent;
+  color: var(--brand-color-wine-red);
+  border: 2px solid var(--brand-color-wine-red);
+`;
