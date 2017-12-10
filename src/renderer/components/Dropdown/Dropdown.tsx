@@ -7,16 +7,35 @@ const dropdownClass = style({
 });
 
 interface DropdownProps extends React.HTMLProps<HTMLDivElement> {
+  keepOpenOnSelect?: boolean;
+  preferredHorizontal?: 'left' | 'right';
+  preferredVertical?: 'top' | 'bottom';
 }
 
-class Dropdown extends React.Component<DropdownProps, {}> {
+interface DropdownState {
+  isActive: boolean;
+}
+
+class Dropdown extends React.Component<DropdownProps, DropdownState> {
   constructor (props: DropdownProps) {
     super(props);
+
+    this.state = {
+      isActive: false
+    };
   }
+
+  static defaultProps = {
+    keepOpenOnSelect: false,
+    preferredHorizontal: 'right',
+    preferredVertical: 'bottom'
+  };
 
   public render() {
     return (
-      <div className={classnames(dropdownClass, this.props.className)}>
+      <div
+        className={classnames(dropdownClass, this.props.className)}
+      >
         {this.props.children}
       </div>
     );

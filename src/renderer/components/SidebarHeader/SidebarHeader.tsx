@@ -9,7 +9,9 @@ const sidebarHeaderClass = style({
   display: 'flex',
   height: '42px',
   backgroundColor: 'var(--brand-color-wine-red)',
-  color: 'var(--color-white)'
+  color: 'var(--color-white)',
+  boxShadow: '0 3px 6px 0 rgba(0, 0, 0, .2)',
+  zIndex: 9
 });
 
 const projectNameClass = style({
@@ -31,23 +33,37 @@ interface SidebarHeaderProps {
   projectName: string;
 }
 
-class SidebarHeader extends React.Component<SidebarHeaderProps, {}> {
+interface SidebarHeaderState {
+  menuIsVisible: boolean;
+}
+
+class SidebarHeader extends React.Component<SidebarHeaderProps, SidebarHeaderState> {
   constructor (props: SidebarHeaderProps) {
     super(props);
+
+    this.state = {
+      menuIsVisible: false
+    };
   }
 
   public render() {
     return (
-      <div>
+      <React.Fragment>
         <div className={sidebarHeaderClass}>
           <div className={projectNameClass}>{this.props.projectName}</div>
-          <div className={sidebarTriggerClass}>
+          <div className={sidebarTriggerClass} onClick={() => this.toggleMenu()}>
             <Icon.Menu />
           </div>
         </div>
-        <SidebarMenu />
-      </div>
+        <SidebarMenu isVisible={this.state.menuIsVisible} />
+      </React.Fragment>
     );
+  }
+
+  private toggleMenu() {
+    return this.setState({
+      menuIsVisible: !this.state.menuIsVisible
+    });
   }
 }
 
