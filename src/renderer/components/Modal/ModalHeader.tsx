@@ -39,7 +39,7 @@ const modalCloseButtonClass = style({
 
 interface ModalHeaderProps {
   title: string;
-  onCloseButtonClick: () => any;
+  onCloseButtonClick: React.MouseEventHandler<any>;
 }
 
 const ModalHeader: React.SFC<ModalHeaderProps> = ({ title, onCloseButtonClick }) => (

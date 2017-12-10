@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { style } from 'typestyle';
-
-const modalHeaderClass = style({
-  padding: 'var(--spacer)'
-});
+import styled from 'styled-components';
 
 interface ModalContentProps {
+  className?: string;
 }
 
-const ModalContent: React.SFC<ModalContentProps> = ({ children }) => (
-  <div className={modalHeaderClass}>
+const ModalContent: React.SFC<ModalContentProps> = ({ className, children }) => (
+  <div className={className}>
     {children}
   </div>
 );
 
-export default ModalContent;
+export default styled(ModalContent)`
+  padding: var(--spacer);
+`;
