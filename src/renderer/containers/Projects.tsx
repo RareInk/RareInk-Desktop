@@ -1,19 +1,8 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { style } from 'typestyle';
 
 import ProjectNoMatch from './ProjectNoMatch';
-
-const root = style({
-  display: 'flex',
-  width: '100%',
-  height: '100%'
-});
-
-const inner = style({
-  display: 'block',
-  maxWidth: '75%'
-});
+import { PageWrapper } from '../components/PageWrapper';
 
 export default class Projects extends React.Component<RouteComponentProps<{}>, {}> {
   constructor(props: RouteComponentProps<{}>) {
@@ -23,7 +12,7 @@ export default class Projects extends React.Component<RouteComponentProps<{}>, {
   public render() {
     return (
       <Switch>
-        <Route path="/" component={() => <div>Projects</div>} />
+        <Route path="/" component={() => <PageWrapper>Projects</PageWrapper>} />
         <Route path="/:id" />
         <Route component={ProjectNoMatch}/>
       </Switch>

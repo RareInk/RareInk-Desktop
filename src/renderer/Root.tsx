@@ -32,15 +32,13 @@ export const root = (
       ))}
     </aside>
 
-    <main>
-      {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          exact={route.exact}
-          component={route.main}
-        />
-      ))}
-    </main>
+    {routes.map((route, index) => (
+      <Route
+        key={index}
+        path={route.path}
+        exact={route.exact}
+        component={route.main}
+      />
+    ))}
   </App>
 );
