@@ -3,10 +3,10 @@ import * as React from 'react';
 interface ButtonProps {
   id?: string;
   className?: string;
-  type?: 'submit' | 'reset' | 'button' | 'menu';
+  type?: 'submit' | 'reset' | 'button';
   kind: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link';
   size?: 'small' | 'normal' | 'large';
-  onClick?: () => any;
+  onClick?: React.MouseEventHandler<any>;
 }
 
 class Button extends React.PureComponent<ButtonProps, {}> {
