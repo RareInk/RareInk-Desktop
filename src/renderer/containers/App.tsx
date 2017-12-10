@@ -1,18 +1,18 @@
 import * as React from 'react';
 import Modal from 'react-modal';
 import { ipcRenderer } from 'electron';
-import { style } from 'typestyle';
-import { modalStyles } from '../utils/styles';
+import styled from 'styled-components';
+import { modalStyles } from '../utils/react-modal';
 
 import ComponentPlayground from '../playground/ComponentPlayground';
 import { ModalHeader, ModalContent } from '../components/Modal';
 
-const rootClass = style({
-  display: 'grid',
-  gridTemplateColumns: '240px auto',
-  height: '100%',
-  marginTop: 0
-});
+const AppWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 240px auto;
+  height: 100%;
+  margin-top: 0;
+`;
 
 interface AppState {
   playgroundModalOpen: boolean;
@@ -39,7 +39,7 @@ export default class App extends React.Component<{}, AppState> {
 
   public render () {
     return (
-      <div className={rootClass}>
+      <AppWrapper>
         {this.props.children}
         <Modal
           isOpen={this.state.playgroundModalOpen}
@@ -54,7 +54,7 @@ export default class App extends React.Component<{}, AppState> {
             <ComponentPlayground />
           </ModalContent>
         </Modal>
-      </div>
+      </AppWrapper>
     );
   }
 
