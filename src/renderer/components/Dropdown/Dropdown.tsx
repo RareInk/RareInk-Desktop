@@ -1,11 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { style } from 'typestyle';
-import * as classnames from 'classnames';
-
-const dropdownClass = style({
-  position: 'relative',
-});
 
 const DropdownRoot = styled.div`
   position: relative;
