@@ -29,7 +29,8 @@
     "compile": "electron-webpack",
     "dev": "electron-webpack dev",
     "dist": "yarn compile && electron-builder",
-    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "lint": "tslint src/**/*.{ts,tsx}"
   },
   "build": {
     "appId": "com.RareInk.RareInkDesktop",

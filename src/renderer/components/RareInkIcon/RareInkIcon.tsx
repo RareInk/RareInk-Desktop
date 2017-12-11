@@ -4,11 +4,11 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 const foregroundClass = style({
-  fill: 'var(--color-white)'
+  fill: 'var(--color-white)',
 });
 
 const backgroundClass = style({
-  fill: 'var(--brand-color-wine-red)'
+  fill: 'var(--brand-color-wine-red)',
 });
 
 interface RareInkIconProps {

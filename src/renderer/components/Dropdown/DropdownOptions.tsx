@@ -9,15 +9,15 @@ const dropdownOptionsClass = style({
   color: 'var(--brand-color-ink-black)',
   border: '1px solid var(--color-gray-500)',
   borderRadius: '3px',
-  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .2)'
+  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .2)',
 });
 
 const popoutTop = style({
-  bottom: '32px'
+  bottom: '32px',
 });
 
 const popoutBottom = style({
-  top: '32px'
+  top: '32px',
 });
 
 interface DropdownOptionsProps extends React.HTMLProps<HTMLDivElement> {
@@ -38,7 +38,7 @@ class DropdownOptions extends React.Component<DropdownOptionsProps, {}> {
         className={classnames(
           dropdownOptionsClass,
           popoutDirection && popoutDirection === 'top' ? popoutTop : popoutBottom,
-          className
+          className,
         )}
       >
         {this.props.children}

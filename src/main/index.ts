@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
-import setMainMenu from './menu';
-import initMainListener from './listeners';
+import setMenu from './setMenu';
+import initMainListener from './initMainListener';
 import { isDevelopment } from '../common/utils/platform';
 
 // Set Electron globals here.
@@ -16,7 +16,7 @@ const installExtensions = async () => {
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   const extensions = [
     'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS'
+    'REDUX_DEVTOOLS',
   ];
 
   return Promise
@@ -32,7 +32,7 @@ async function createMainWindow() {
   const window = new BrowserWindow({
     width: 800,
     height: 600,
-    title: 'RareInk'
+    title: 'RareInk',
   });
 
   // Set url for `win`
@@ -50,7 +50,7 @@ async function createMainWindow() {
   window.loadURL(url);
 
   // Build the application main menu.
-  setMainMenu(window);
+  setMenu(window);
 
   window.on('closed', () => {
     win = null;

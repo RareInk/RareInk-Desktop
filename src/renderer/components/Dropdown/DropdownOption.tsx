@@ -12,9 +12,9 @@ const dropdownOptionClass = style({
     '&:hover, &:focus': {
       color: 'var(--color-blue)',
       backgroundColor: 'var(--color-gray-100)',
-      textDecoration: 'none'
-    }
-  }
+      textDecoration: 'none',
+    },
+  },
 });
 
 interface DropdownOptionProps {

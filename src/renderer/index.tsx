@@ -34,7 +34,7 @@ const renderApp = () => {
         <ConnectedRouter history={history} children={root} />
       </Provider>
     </AppContainer>,
-    document.getElementById('app')
+    document.getElementById('app'),
   );
 };
 

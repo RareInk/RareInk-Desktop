@@ -23,7 +23,7 @@ export default class App extends React.Component<{}, AppState> {
     super(props);
 
     this.state = {
-      playgroundModalOpen: false
+      playgroundModalOpen: false,
     };
   }
 

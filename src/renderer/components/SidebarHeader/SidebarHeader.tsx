@@ -40,7 +40,7 @@ class SidebarHeader extends React.Component<SidebarHeaderProps, SidebarHeaderSta
     super(props);
 
     this.state = {
-      menuIsVisible: false
+      menuIsVisible: false,
     };
   }
 
@@ -60,7 +60,7 @@ class SidebarHeader extends React.Component<SidebarHeaderProps, SidebarHeaderSta
 
   private toggleMenu() {
     return this.setState({
-      menuIsVisible: !this.state.menuIsVisible
+      menuIsVisible: !this.state.menuIsVisible,
     });
   }
 }

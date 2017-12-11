@@ -118,15 +118,14 @@ export class AsyncDatastore extends Nedb {
           resolve(documents);
         }
       }));
-    } else {
-      return new Promise((resolve, reject) => super.find<T>(query, (err: any, documents: any) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(documents);
-        }
-      }));
     }
+    return new Promise((resolve, reject) => super.find<T>(query, (err: any, documents: any) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(documents);
+      }
+    }));
   }
 
   /**
@@ -151,16 +150,15 @@ export class AsyncDatastore extends Nedb {
             resolve(document);
           }
         }));
-    } else {
-      return new Promise((resolve, reject) =>
-        super.findOne<T>(query, (err: Error, document: any) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(document);
-          }
-        }));
     }
+    return new Promise((resolve, reject) =>
+      super.findOne<T>(query, (err: Error, document: any) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(document);
+        }
+      }));
   }
 
   /**
@@ -175,7 +173,7 @@ export class AsyncDatastore extends Nedb {
   public updateAsync<T>(
     query: any,
     updateQuery: any,
-    options?: Nedb.UpdateOptions
+    options?: Nedb.UpdateOptions,
   ): Promise<NedbUpdateReturnMessage> {
     return new Promise((resolve, reject) =>
       // tslint:disable:align
@@ -206,14 +204,13 @@ export class AsyncDatastore extends Nedb {
           resolve(n);
         }
       }));
-    } else {
-      return new Promise((resolve, reject) => super.remove(query, (err, n) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(n);
-        }
-      }));
     }
+    return new Promise((resolve, reject) => super.remove(query, (err, n) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(n);
+      }
+    }));
   }
 }

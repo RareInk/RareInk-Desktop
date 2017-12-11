@@ -15,11 +15,11 @@ export const routes: RoutesDefinition[] = [
     path: '/',
     exact: true,
     sidebar: HomeSidebar,
-    main: Home
+    main: Home,
   },
   {
     path: '/projects',
     sidebar: () => <div>ProjectsSidebar</div>,
-    main: Projects
-  }
+    main: Projects,
+  },
 ];

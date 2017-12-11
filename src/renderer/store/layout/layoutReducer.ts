@@ -2,7 +2,7 @@ import { Reducer, AnyAction } from 'redux';
 import { LayoutState } from './types';
 
 const initialState: LayoutState = {
-  isMaximized: false
+  isMaximized: false,
 };
 
 export const reducer: Reducer<LayoutState> =

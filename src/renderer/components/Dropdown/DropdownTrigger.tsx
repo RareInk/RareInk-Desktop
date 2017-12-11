@@ -3,7 +3,7 @@ import { style } from 'typestyle';
 import * as classnames from 'classnames';
 
 const dropdownTriggerClass = style({
-  display: 'block'
+  display: 'block',
 });
 
 interface DropdownTriggerProps extends React.HTMLProps<HTMLDivElement> {

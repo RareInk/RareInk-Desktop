@@ -21,55 +21,55 @@ const createMenu = (window: Electron.BrowserWindow) =>
               return;
             }
             window.webContents.send('rareink:window:toggle-preferences');
-          }
+          },
         },
         {
           label: isWindows() ? 'Exit' : `Quit ${app.getName()}`,
           accelerator: isWindows() ? 'Alt+F4' : 'CmdOrCtrl+Q',
           click: () => {
             app.quit();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       label: 'Edit',
       submenu: [
         {
           role: 'undo',
-          accelerator: 'CmdOrCtrl+Z'
+          accelerator: 'CmdOrCtrl+Z',
         },
         {
           role: 'redo',
-          accelerator: 'CmdOrCtrl+Y'
+          accelerator: 'CmdOrCtrl+Y',
         },
         {
-          type: 'separator'
+          type: 'separator',
         },
         {
           role: 'cut',
-          accelerator: 'CmdOrCtrl+X'
+          accelerator: 'CmdOrCtrl+X',
         },
         {
           role: 'copy',
-          accelerator: 'CmdOrCtrl+C'
+          accelerator: 'CmdOrCtrl+C',
         },
         {
           role: 'paste',
-          accelerator: 'CmdOrCtrl+V'
+          accelerator: 'CmdOrCtrl+V',
         },
         {
           role: 'pasteandmatchstyle',
-          accelerator: 'CmdOrCtrl+Shift+V'
+          accelerator: 'CmdOrCtrl+Shift+V',
         },
         {
-          role: 'delete'
+          role: 'delete',
         },
         {
           role: 'selectall',
-          accelerator: 'CmdOrCtrl+A'
-        }
-      ]
+          accelerator: 'CmdOrCtrl+A',
+        },
+      ],
     },
     {
       label: 'View',
@@ -82,8 +82,8 @@ const createMenu = (window: Electron.BrowserWindow) =>
         { role: 'zoomin' },
         { role: 'zoomout' },
         { type: 'separator' },
-        { role: 'togglefullscreen' }
-      ]
+        { role: 'togglefullscreen' },
+      ],
     },
     {
       role: 'window',
@@ -96,13 +96,13 @@ const createMenu = (window: Electron.BrowserWindow) =>
                 return;
               }
               window.webContents.send('rareink:window:toggle-playground');
-            }
+            },
           },
           { type: 'separator' }]
           : []) as MenuItemConstructorOptions[],
         { role: 'minimize' },
-        { role: 'close' }
-      ]
+        { role: 'close' },
+      ],
     },
     {
       role: 'help',
@@ -113,12 +113,12 @@ const createMenu = (window: Electron.BrowserWindow) =>
             dialog.showMessageBox({
               title: 'About RareInk',
               message: 'RareInk',
-              detail: 'You\'re running a development copy of RareInk. Stuff might not exist yet.'
+              detail: 'You\'re running a development copy of RareInk. Stuff might not exist yet.',
             });
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   ]);
 
 const setMenu = (win: Electron.BrowserWindow) =>

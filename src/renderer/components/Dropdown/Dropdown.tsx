@@ -3,7 +3,7 @@ import { style } from 'typestyle';
 import * as classnames from 'classnames';
 
 const dropdownClass = style({
-  position: 'relative'
+  position: 'relative',
 });
 
 interface DropdownProps extends React.HTMLProps<HTMLDivElement> {
@@ -21,14 +21,14 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
     super(props);
 
     this.state = {
-      isActive: false
+      isActive: false,
     };
   }
 
   static defaultProps = {
     keepOpenOnSelect: false,
     preferredHorizontal: 'right',
-    preferredVertical: 'bottom'
+    preferredVertical: 'bottom',
   };
 
   public render() {

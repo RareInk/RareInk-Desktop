@@ -13,9 +13,9 @@ const modalHeaderClass = style({
 
   $nest: {
     '& div': {
-      height: '100%'
-    }
-  }
+      height: '100%',
+    },
+  },
 });
 
 const modalTitleClass = style({
@@ -26,15 +26,15 @@ const modalTitleClass = style({
   $nest: {
     '& h3': {
       margin: 0,
-      fontWeight: 400
-    }
-  }
+      fontWeight: 400,
+    },
+  },
 });
 
 const modalCloseButtonClass = style({
   display: 'flex',
   alignItems: 'center',
-  cursor: 'pointer'
+  cursor: 'pointer',
 });
 
 interface ModalHeaderProps {

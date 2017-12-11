@@ -4,7 +4,7 @@ import {
   applyMiddleware,
   combineReducers,
   GenericStoreEnhancer,
-  Reducer
+  Reducer,
 } from 'redux';
 import thunk from 'redux-thunk';
 import { History } from 'history';
@@ -18,7 +18,7 @@ export default function configureStore(history: History) {
   const composeEnhancers = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const enhancer = composeEnhancers(
-    applyMiddleware(thunk, routerMiddleware(history))
+    applyMiddleware(thunk, routerMiddleware(history)),
   ) as GenericStoreEnhancer;
 
   // Combine all reducers and instantiate the app-wide store instance
@@ -39,6 +39,6 @@ export default function configureStore(history: History) {
 function buildRootReducer<TState>(allReducers: {[key: string]: Reducer<any>}) {
   return combineReducers<TState>({
     ...allReducers,
-    routing: routerReducer
+    routing: routerReducer,
   });
 }
