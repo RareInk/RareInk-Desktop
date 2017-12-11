@@ -1,26 +1,20 @@
 import * as React from 'react';
 import { Route } from 'react-router';
-import { style } from 'typestyle';
+import styled from 'styled-components';
 import { routes } from './routes';
 
 import App from './containers/App';
 import { SidebarHeader } from './components/SidebarHeader';
 
-const sidebarClass = style({
-  display: 'flex',
-  flexDirection: 'column',
-  borderRight: '1px solid var(--color-gray-400)',
-
-  $nest: {
-    [`& .childClass`]: {
-      color: 'red'
-    }
-  }
-});
+const Sidebar = styled.aside`
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--color-gray-400);
+`;
 
 export const root = (
   <App>
-    <aside className={sidebarClass}>
+    <Sidebar>
       <SidebarHeader projectName="Project Name" />
       {routes.map((route, index) => (
         <Route
@@ -30,7 +24,7 @@ export const root = (
           component={route.sidebar}
         />
       ))}
-    </aside>
+    </Sidebar>
 
     {routes.map((route, index) => (
       <Route

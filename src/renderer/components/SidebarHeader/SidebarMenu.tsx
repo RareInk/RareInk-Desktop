@@ -1,35 +1,33 @@
 import * as React from 'react';
-import * as classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { style } from 'typestyle';
 
-const sidebarOptionsClass = style({
-  boxShadow: 'none',
-  border: 0,
-  borderRadius: 0,
-  borderBottom: '1px solid var(--color-gray-400)'
-});
+const SidebarOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-gray-400);
+  border-bottom: 1px solid var(--color-gray-400);
+`;
 
-const sidebarOptionClass = style({
-  display: 'block',
-  padding: '6px 12px',
-  cursor: 'pointer',
-  color: 'inherit',
+const SidebarOption = styled(Link)`
+  display: block;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  color: inherit;
 
-  $nest: {
-    '&:hover, &:focus': {
-      color: 'var(--color-blue)',
-      backgroundColor: 'var(--color-gray-100)',
-      textDecoration: 'none'
-    }
+  &:hover, &:focus {
+    color: var(--color-blue);
+    background-color: var(--color-gray-200);
+    text-decoration: none;
   }
-});
+`;
 
-const menuSpacerClass = style({
-  margin: '2px 0',
-  border: 0,
-  borderTop: '1px solid var(--color-gray-400)'
-});
+const SidebarSpacer = styled.hr`
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--color-gray-400);
+`;
 
 interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
   isVisible: boolean;
@@ -39,14 +37,14 @@ const SidebarMenu: React.SFC<SidebarMenuProps> = ({ isVisible }) => {
   return (
     <React.Fragment>
       {isVisible
-        ? <div className={classnames(sidebarOptionsClass)}>
-          <Link className={sidebarOptionClass} to="/">Home</Link>
-          <Link className={sidebarOptionClass} to="/projects">Projects</Link>
-          <div className={sidebarOptionClass}>Option3</div>
-          <div className={menuSpacerClass} />
-          <div className={sidebarOptionClass}>More Projects...</div>
-          <div className={sidebarOptionClass}>Create New Project...</div>
-        </div>
+        ? <SidebarOptions>
+          <SidebarOption to="/">Home</SidebarOption>
+          <SidebarOption to="/projects">Projects</SidebarOption>
+          <SidebarOption to="/">Option3</SidebarOption>
+          <SidebarSpacer />
+          <SidebarOption to="/">More Projects...</SidebarOption>
+          <SidebarOption to="/">Create New Project...</SidebarOption>
+        </SidebarOptions>
         : ''
       }
     </React.Fragment>

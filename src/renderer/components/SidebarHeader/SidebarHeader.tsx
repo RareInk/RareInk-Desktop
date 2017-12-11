@@ -1,33 +1,31 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+import styled from 'styled-components';
 
 const Icon = require('react-feather');
 
 import SidebarMenu from './SidebarMenu';
 
-const sidebarHeaderClass = style({
-  display: 'flex',
-  height: '42px',
-  backgroundColor: 'var(--brand-color-wine-red)',
-  color: 'var(--color-white)',
-  boxShadow: '0 3px 6px 0 rgba(0, 0, 0, .2)',
-  zIndex: 9
-});
+const SidebarHeaderInner = styled.div`
+  display: flex;
+  height: 42px;
+  background-color: var(--brand-color-wine-red);
+  color: var(--color-white);
+`;
 
-const projectNameClass = style({
-  display: 'flex',
-  flex: 'auto',
-  alignItems: 'center',
-  padding: '0 var(--spacer)'
-});
+const ProjectName = styled.div`
+  display: flex;
+  flex: auto;
+  align-items: center;
+  padding: 0 var(--spacer);
+`;
 
-const sidebarTriggerClass = style({
-  display: 'flex',
-  alignItems: 'center',
-  paddingLeft: 'var(--spacer)',
-  paddingRight: 'var(--spacer)',
-  cursor: 'pointer'
-});
+const SidebarTrigger = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+  cursor: pointer;
+`;
 
 interface SidebarHeaderProps {
   projectName: string;
@@ -49,12 +47,12 @@ class SidebarHeader extends React.Component<SidebarHeaderProps, SidebarHeaderSta
   public render() {
     return (
       <React.Fragment>
-        <div className={sidebarHeaderClass}>
-          <div className={projectNameClass}>{this.props.projectName}</div>
-          <div className={sidebarTriggerClass} onClick={() => this.toggleMenu()}>
+        <SidebarHeaderInner>
+          <ProjectName>{this.props.projectName}</ProjectName>
+          <SidebarTrigger onClick={() => this.toggleMenu()}>
             <Icon.Menu />
-          </div>
-        </div>
+          </SidebarTrigger>
+        </SidebarHeaderInner>
         <SidebarMenu isVisible={this.state.menuIsVisible} />
       </React.Fragment>
     );
