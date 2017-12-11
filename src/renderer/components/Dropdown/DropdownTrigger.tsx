@@ -1,13 +1,9 @@
 import * as React from 'react';
-import { style } from 'typestyle';
-import * as classnames from 'classnames';
+import styled from 'styled-components';
 
-const dropdownTriggerClass = style({
-  display: 'block',
-});
-
-interface DropdownTriggerProps extends React.HTMLProps<HTMLDivElement> {
+interface DropdownTriggerProps {
   icon?: string;
+  className?: string;
 }
 
 class DropdownTrigger extends React.Component<DropdownTriggerProps, {}> {
@@ -17,11 +13,13 @@ class DropdownTrigger extends React.Component<DropdownTriggerProps, {}> {
 
   public render() {
     return (
-      <div className={classnames(dropdownTriggerClass, this.props.className)}>
+      <div>
         {this.props.children}
       </div>
     );
   }
 }
 
-export default DropdownTrigger;
+export default styled(DropdownTrigger)`
+  display: block;
+`;
