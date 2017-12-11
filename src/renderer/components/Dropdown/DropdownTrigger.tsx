@@ -1,6 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+const Trigger = styled.div`
+  display: block;
+`;
+
 interface DropdownTriggerProps {
   icon?: string;
   className?: string;
@@ -13,13 +17,11 @@ class DropdownTrigger extends React.Component<DropdownTriggerProps, {}> {
 
   public render() {
     return (
-      <div>
+      <Trigger>
         {this.props.children}
-      </div>
+      </Trigger>
     );
   }
 }
 
-export default styled(DropdownTrigger)`
-  display: block;
-`;
+export default DropdownTrigger;

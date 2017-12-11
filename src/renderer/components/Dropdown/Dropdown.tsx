@@ -1,10 +1,15 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { style } from 'typestyle';
 import * as classnames from 'classnames';
 
 const dropdownClass = style({
   position: 'relative',
 });
+
+const DropdownRoot = styled.div`
+  position: relative;
+`;
 
 interface DropdownProps extends React.HTMLProps<HTMLDivElement> {
   keepOpenOnSelect?: boolean;
@@ -33,11 +38,9 @@ class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
   public render() {
     return (
-      <div
-        className={classnames(dropdownClass, this.props.className)}
-      >
+      <DropdownRoot>
         {this.props.children}
-      </div>
+      </DropdownRoot>
     );
   }
 }
