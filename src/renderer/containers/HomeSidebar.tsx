@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { style } from 'typestyle';
 import { RouteComponentProps } from 'react-router';
 
 const HomeSidebar: React.SFC<RouteComponentProps<{}>> = props => (
