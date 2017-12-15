@@ -8,99 +8,47 @@
 
 Currently runs with:
 
-- Angular v4.3.5 (with Angular CLI)
-- Electron v1.7.5
-- electron-builder v19.27.7
+- `react@^16.0.0`
+- `electron@1.7.5`
+- `electron-builder@^19.34.1`
 
 ## Getting Started
 
 Clone this repository locally:
 
-``` bash
-$ git clone https://github.com/RareInk/RareInk-Desktop.git
+```bash
+git clone https://github.com/RareInk/RareInk-Desktop.git
 ```
 
-Install dependencies with npm:
-
-``` bash
-$ npm install
-```
-
-There is an issue with `yarn` and `node_modules` that are only used in electron on the backend when the application is built by the packager. Please use `npm` as dependencies manager.
-
-If you want to generate Angular components with Angular CLI, you **MUST** install `@angular/cli` in npm global context. Please follow [the Angular CLI documentation](https://github.com/angular/angular-cli) if you have used an older version of the Angular CLI before.
-
-``` bash
-npm install -g @angular/cli
-```
-
-## To build for development
-
-You will need two terminal windows.
+Install dependencies with [yarn](https://yarnpkg.com/en/):
 
 ```bash
-# in a terminal window
-$ npm start
-
-# in another terminal window
-$ npm run electron:serve
+yarn
 ```
 
-Voila! You can now run RareInk in your local development environment, with hot reload too!
+> **Why Yarn?** Yarn has a stronger lockfile model and fixes most of the issues pre-npm@5. It still supports npm repositories and works well with all the npm goodness that you commonly use.
 
-The Angular component contains an example of Electron and NodeJS native lib import. See [Use NodeJS Native libraries](#use-nodejs-native-libraries) if you want to import other native libraries in your project.
+Thanks to the power of `electron-webpack` this project comes packed with...
 
-## To build for production
+* Use of [`webpack-dev-server`](https://github.com/webpack/webpack-dev-server) for development
+* HMR for both `renderer` and `main` processes
+* Use of [`babel-preset-env`](https://github.com/babel/babel-preset-env) that is automatically configured based on your `electron` version
+* Use of [`electron-builder`](https://github.com/electron-userland/electron-builder) to package and build a distributable electron application
 
-* Using development variables (environments/index.ts): `npm run electron:dev`
-* Using production variables (environments/index.prod.ts): `npm run electron:prod`
+Make sure to check out [`electron-webpack`'s documentation](https://webpack.electron.build/) for more details.
 
-Your built files are in the `/dist` folder.
-
-## Included Commands
-
-|Command|Description|
-|--|--|
-|`npm start`| Starts a development server on `localhost:4200`. |
-|`npm run electron:linux`| Builds the app and creates an executable for Linux. |
-|`npm run electron:windows`| Builds the app and creates an executable for 32-bit and 64-bit Windows systems. |
-|`npm run electron:mac`| Builds the app and creates an executable for macOS. |
-
-**Your application is optimised. Only the files of /dist folder are included in the executable.**
-
-## Browser mode
-
-Running `npm start` also runs a local development server on port 4200.
-
-Note that importing native NodeJS modules can only be done on Electron mode. You can conditionally import native NodeJS modules by using conditional import utilising Electron's `remote` API.
-
-```ts
-if (this.electron.isElectron) {
-  const os = this.electron.remote.require('os');
-  this.runmode = `Running as an Electron app on ${os.platform()}.`;
-} else {
-  this.runmode = 'Running as a web app.';
-}
-```
-
-## Execute E2E tests
-
-You can find end-to-end tests in /e2e folder.
+### Development Scripts
 
 ```bash
-# First, start a web server on port 4200
-$ npm run start:web
+# run application in development mode
+yarn dev
 
-# Then in another terminal window, launch Protractor (E2E framework)
-$ npm run e2e
+# compile source code and create webpack output
+yarn compile
+
+# `yarn compile` & create build with electron-builder
+yarn dist
+
+# `yarn compile` & create unpacked build with electron-builder
+yarn dist:dir
 ```
-
-## Special thanks
-
-* Maxime GRIS ([angular-electron](https://github.com/maximegris/angular-electron) starter kit)
-
-# Contributors
-
-[<img alt="Resi Respati" src="https://avatars2.githubusercontent.com/u/5663877?v=3&s=117" width="117">](https://github.com/resir014)|[<img alt="Mhyre" src="https://avatars2.githubusercontent.com/u/30327817?v=3&s=117" width="117">](https://github.com/eryhM)|
-:---:|:---:|
-|[Resi Respati](https://github.com/resir014)|[Mhyre](https://github.com/eryhM)|
