@@ -45,6 +45,10 @@ function initMainListener(window: Electron.BrowserWindow) {
     const menu = Menu.getApplicationMenu();
     menu.popup(window, {});
   });
+
+  ipcMain.on('rareink:sidebar:create-project', () => {
+    console.log('rareink:sidebar:create-project');
+  });
 }
 
 export default initMainListener;

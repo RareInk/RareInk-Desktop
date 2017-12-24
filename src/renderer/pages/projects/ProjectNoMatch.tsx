@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { PageWrapper } from '../components/PageWrapper';
+import { PageWrapper } from '../../components/PageWrapper';
 
 const Inner = styled.div`
 display: block;

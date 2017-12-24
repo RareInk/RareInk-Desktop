@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ipcRenderer } from 'electron';
 
 const SidebarOptions = styled.div`
   display: flex;
@@ -10,6 +11,19 @@ const SidebarOptions = styled.div`
 `;
 
 const SidebarOption = styled(Link)`
+  display: block;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover, &:focus {
+    color: var(--color-blue);
+    background-color: var(--color-gray-200);
+    text-decoration: none;
+  }
+`;
+
+const SidebarOptionLink = styled.a`
   display: block;
   padding: .5rem 1rem;
   cursor: pointer;
@@ -32,6 +46,8 @@ interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
   isVisible: boolean;
 }
 
+const onSidebarOptionsClick = () => ipcRenderer.send('rareink:sidebar:create-project');
+
 const SidebarMenu: React.SFC<SidebarMenuProps> = ({ isVisible }) => {
   return (
     <React.Fragment>
@@ -42,7 +58,9 @@ const SidebarMenu: React.SFC<SidebarMenuProps> = ({ isVisible }) => {
           <SidebarOption to="/">Option3</SidebarOption>
           <SidebarSpacer />
           <SidebarOption to="/">More Projects...</SidebarOption>
-          <SidebarOption to="/">Create New Project...</SidebarOption>
+          <SidebarOptionLink onClick={onSidebarOptionsClick}>
+            Create New Project...
+          </SidebarOptionLink>
         </SidebarOptions>
         : ''
       }

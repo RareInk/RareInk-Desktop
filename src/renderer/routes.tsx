@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RouteProps } from 'react-router';
 
-import Home from './containers/Home';
 import HomeSidebar from './containers/HomeSidebar';
-import Projects from './containers/Projects';
+
+import Home from './pages/Home';
+import Projects from './pages/Projects';
 
 export interface RoutesDefinition extends RouteProps {
   sidebar: any;

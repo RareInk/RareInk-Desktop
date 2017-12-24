@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 
-import ProjectNoMatch from './ProjectNoMatch';
+import ProjectNoMatch from './projects/ProjectNoMatch';
 import { PageWrapper } from '../components/PageWrapper';
 
 export default class Projects extends React.Component<RouteComponentProps<{}>, {}> {
