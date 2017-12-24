@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ipcRenderer } from 'electron';
 
 const SidebarOptions = styled.div`
   display: flex;
@@ -46,8 +45,6 @@ interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
   isVisible: boolean;
 }
 
-const onSidebarOptionsClick = () => ipcRenderer.send('rareink:sidebar:create-project');
-
 const SidebarMenu: React.SFC<SidebarMenuProps> = ({ isVisible }) => {
   return (
     <React.Fragment>
@@ -58,7 +55,7 @@ const SidebarMenu: React.SFC<SidebarMenuProps> = ({ isVisible }) => {
           <SidebarOption to="/">Option3</SidebarOption>
           <SidebarSpacer />
           <SidebarOption to="/">More Projects...</SidebarOption>
-          <SidebarOptionLink onClick={onSidebarOptionsClick}>
+          <SidebarOptionLink>
             Create New Project...
           </SidebarOptionLink>
         </SidebarOptions>
