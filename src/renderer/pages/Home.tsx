@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
-import { Editor, EditorState } from 'draft-js';
+// import { Editor, EditorState } from 'draft-js';
 
 import { PageWrapper } from '../components/PageWrapper';
 

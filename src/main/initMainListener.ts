@@ -43,7 +43,9 @@ function initMainListener(window: Electron.BrowserWindow) {
     // TODO: Currently unused. This should be moved to the custom titlebar's renderer process when
     // we finally have one.
     const menu = Menu.getApplicationMenu();
-    menu.popup(window, {});
+    if (menu) {
+      menu.popup(window, {});
+    }
   });
 
   ipcMain.on('rareink:sidebar:create-project', () => {
