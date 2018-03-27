@@ -55,6 +55,7 @@
     "history": "^4.7.2",
     "nedb": "^1.8.0",
     "normalize.css": "^7.0.0",
+    "polished": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-feather": "^1.0.8",
@@ -67,8 +68,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "source-map-support": "^0.5.4",
-    "styled-components": "^2.2.4",
-    "tinycolor2": "^1.4.1"
+    "styled-components": "^2.2.4"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",
